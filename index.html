@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"/><title>Decor City ERP</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
 tailwind.config={
   darkMode:'class',
@@ -3576,31 +3577,78 @@ function updateCustBal(cid){
   }
 }
 // ============ PERSISTENCE ============
-function saveDB(){
-  try{localStorage.setItem('dc_erp_v2',JSON.stringify({
+const SUPABASE_URL = 'https://ujblogfdxxktendnzjlg.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqYmxvZ2ZkeHhrdGVuZG56amxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MTAyMDIsImV4cCI6MjA5ODk4NjIwMn0.Pi9U7-qf3iSG8sKz8Vs75YoC1CR5OYdVcEVFs7zwJAA';
+var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+var _sbSyncing = false;
+
+function applyDataToDB(d){
+  if(!d)return;
+  if(d.quotes)DB.quotes=d.quotes;
+  if(d.items)DB.items=d.items;
+  if(d.productions)DB.productions=d.productions;
+  if(d.receipts)DB.receipts=d.receipts;
+  if(d.customers)DB.customers=d.customers;
+  if(d.ids)DB.ids=d.ids;
+  if(d.payPeriods)DB.payPeriods=d.payPeriods;
+  if(d.outstanding)DB.outstanding=d.outstanding;
+  if(d.reps){REPS.length=0;d.reps.forEach(function(r){REPS.push(r);});}
+  if(d.artisans){ARTISANS.length=0;d.artisans.forEach(function(a){ARTISANS.push(a);});}
+  if(d.cm){Object.keys(d.cm).forEach(function(t){if(CM[t])Object.assign(CM[t],d.cm[t]);});}
+  if(d.ftStages){Object.keys(d.ftStages).forEach(function(ft){FT_STAGES[ft]=d.ftStages[ft];});}
+  if(d.frameStages){Object.keys(d.frameStages).forEach(function(ft){FRAME_STAGES[ft]=d.frameStages[ft];});}
+  if(d.users)DB.users=d.users;
+  if(d.company)Object.assign(DB.company,d.company);
+}
+
+function packDB(){
+  return{
     quotes:DB.quotes,items:DB.items,productions:DB.productions,receipts:DB.receipts,customers:DB.customers,ids:DB.ids,reps:REPS,artisans:ARTISANS,cm:CM,ftStages:FT_STAGES,frameStages:FRAME_STAGES,payPeriods:DB.payPeriods,outstanding:DB.outstanding,
     users:DB.users,company:DB.company
-  }));}catch(e){}
+  };
 }
+
+function sbSync(){
+  if(_sbSyncing)return;
+  _sbSyncing=true;
+  var data=packDB();
+  var keys=Object.keys(data);
+  var promises=keys.map(function(k){
+    return supabaseClient.from('app_data').upsert({key:k,value:data[k],updated_at:new Date().toISOString()},{onConflict:'key'});
+  });
+  Promise.all(promises).then(function(){_sbSyncing=false;}).catch(function(e){console.error('Supabase sync error:',e);_sbSyncing=false;});
+}
+
+function saveDB(){
+  try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
+  sbSync();
+}
+
 function loadDB(){
   try{
     var d=JSON.parse(localStorage.getItem('dc_erp_v2'));
-    if(d){
-      DB.quotes=d.quotes;DB.items=d.items;DB.productions=d.productions||[];
-      DB.receipts=d.receipts||[];DB.customers=d.customers;DB.ids=d.ids;
-      DB.payPeriods=d.payPeriods||[];
-      DB.outstanding=d.outstanding||[];
-      if(d.reps){REPS.length=0;d.reps.forEach(function(r){REPS.push(r);});}
-      if(d.artisans){ARTISANS.length=0;d.artisans.forEach(function(a){ARTISANS.push(a);});}
-      if(d.cm){Object.keys(d.cm).forEach(function(t){if(CM[t])Object.assign(CM[t],d.cm[t]);});}
-      if(d.ftStages){Object.keys(d.ftStages).forEach(function(ft){FT_STAGES[ft]=d.ftStages[ft];});}
-      if(d.frameStages){Object.keys(d.frameStages).forEach(function(ft){FRAME_STAGES[ft]=d.frameStages[ft];});}
-      if(d.users){DB.users=d.users;}
-      if(d.company){Object.assign(DB.company,d.company);}
-    }
+    if(d)applyDataToDB(d);
   }catch(e){}
 }
 loadDB();
+
+var _sbLoaded=false;
+async function sbLoad(){
+  if(_sbLoaded)return;
+  _sbLoaded=true;
+  try{
+    var res=await supabaseClient.from('app_data').select('key,value');
+    if(res.data&&res.data.length>0){
+      var remote={};
+      res.data.forEach(function(r){remote[r.key]=r.value;});
+      // Only apply remote data if it has real content (not just the built-in defaults)
+      if(remote.quotes&&remote.quotes.length>0){
+        applyDataToDB(remote);
+        try{localStorage.setItem('dc_erp_v2',JSON.stringify(remote));}catch(e){}
+      }
+    }
+  }catch(e){console.error('Supabase load error:',e);}
+}
 
 // ============ AUTH & RBAC ============
 function isAdmin(){
@@ -3763,23 +3811,26 @@ function toggleDark(){
 // Init dark mode from localStorage
 if(localStorage.getItem('dc_dark')==='true'){document.documentElement.classList.add('dark');}
 
-// Migrate existing stages: stamp weekStart for stages that have artisans but no weekStart
-DB.productions.forEach(function(p){
-  p.stages.forEach(function(st){
-    if(st.artisans&&!st.weekStart){
-      // Use stage date if available, otherwise use job date or today
-      var refDate=st.date||st.dateOverride||p.date||localDate();
-      st.weekStart=getWeekStart(refDate);
-    }
-  });
-});
-saveDB();
+// Initialize: load Supabase data first, then migrate, then show app
+(async function(){
+  await sbLoad();
 
-document.getElementById('hd').textContent=new Date().toLocaleDateString('en-GB',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
-// Check for existing session
-if(checkSession()){
-  showApp();
-}else{
-  showLogin();
-}
+  // Migrate existing stages
+  DB.productions.forEach(function(p){
+    p.stages.forEach(function(st){
+      if(st.artisans&&!st.weekStart){
+        var refDate=st.date||st.dateOverride||p.date||localDate();
+        st.weekStart=getWeekStart(refDate);
+      }
+    });
+  });
+  saveDB();
+
+  document.getElementById('hd').textContent=new Date().toLocaleDateString('en-GB',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+  if(checkSession()){
+    showApp();
+  }else{
+    showLogin();
+  }
+})();
 </script></body></html>
