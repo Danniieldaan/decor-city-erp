@@ -3779,9 +3779,17 @@ function hasPermission(action){
 }
 async function fetchProfile(){
   try{
-    var{data}=await supabaseClient.from('profiles').select('role,name,email').eq('id',DB.currentUser.id).single();
-    if(data){DB.currentUser.role=data.role;DB.currentUser.name=data.name;DB.currentUser.email=data.email;}
-  }catch(e){}
+    // Ensure auth session is active before querying
+    var{data:{session}}=await supabaseClient.auth.getSession();
+    if(!session||!session.user)return;
+    var{data,error}=await supabaseClient.from('profiles').select('role,name,email').eq('id',session.user.id).single();
+    if(error){console.error('fetchProfile query error:',error);return;}
+    if(data){
+      DB.currentUser.role=data.role;
+      DB.currentUser.name=data.name;
+      DB.currentUser.email=data.email;
+    }
+  }catch(e){console.error('fetchProfile error:',e);}
 }
 async function logout(){
   await supabaseClient.auth.signOut();
@@ -3795,10 +3803,12 @@ async function checkSession(){
     if(session&&session.user){
       DB.currentUser={id:session.user.id,email:session.user.email,name:'',role:'sales'};
       await fetchProfile();
-      localStorage.setItem('dc_erp_currentUser',JSON.stringify({id:DB.currentUser.id,role:DB.currentUser.role,name:DB.currentUser.name,email:DB.currentUser.email}));
-      return true;
+      if(DB.currentUser.role){
+        localStorage.setItem('dc_erp_currentUser',JSON.stringify({id:DB.currentUser.id,role:DB.currentUser.role,name:DB.currentUser.name,email:DB.currentUser.email}));
+        return true;
+      }
     }
-  }catch(e){}
+  }catch(e){console.error('checkSession error:',e);}
   return false;
 }
 function showLogin(msg){
@@ -3871,6 +3881,8 @@ async function doLogin(){
     if(btn){btn.disabled=false;btn.textContent='Login';}
     return;
   }
+  // Wait for auth session to propagate before querying profiles
+  await supabaseClient.auth.getSession();
   DB.currentUser={id:data.user.id,email:data.user.email,name:'',role:'sales'};
   await fetchProfile();
   await sbLoad(); // Reload data with auth session
