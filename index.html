@@ -3721,15 +3721,18 @@ function sbSync(){
   _sbSyncing=true;
   var data=packDB();
   var keys=Object.keys(data);
-  var promises=keys.map(function(k){
-    return supabaseClient.from('app_data').upsert({key:k,value:data[k],updated_at:new Date().toISOString()},{onConflict:'key'});
+  var remaining=keys.length;
+  keys.forEach(function(k){
+    supabaseClient.from('app_data').upsert(
+      {key:k,value:data[k]},{onConflict:'key'})
+    .then(function(){remaining--;if(!remaining)_sbSyncing=false;})
+    .catch(function(e){console.error('Sync error for key "'+k+'":',e);remaining--;if(!remaining)_sbSyncing=false;});
   });
-  Promise.all(promises).then(function(){_sbSyncing=false;}).catch(function(e){console.error('Supabase sync error:',e);_sbSyncing=false;});
 }
 
 function saveDB(){
   try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
-  if(DB.currentUser&&DB.currentUser.role==='admin')sbSync();
+  if(isAdmin())sbSync();
 }
 function isSales(){
   return DB.currentUser&&DB.currentUser.role==='sales';
@@ -3751,12 +3754,35 @@ async function sbLoad(){
   if(_sbLoaded)return;
   _sbLoaded=true;
   try{
+    // Check what we already have locally
+    var localRaw=localStorage.getItem('dc_erp_v2');
+    var localData=localRaw?JSON.parse(localRaw):null;
+    var hasLocalData=localData&&localData.quotes&&localData.quotes.length>0;
+
     var res=await supabaseClient.from('app_data').select('key,value');
     if(res.data&&res.data.length>0){
       var remote={};
       res.data.forEach(function(r){remote[r.key]=r.value;});
-      // Only apply remote data if it has real content (not just the built-in defaults)
-      if(remote.quotes&&remote.quotes.length>0){
+
+      if(hasLocalData){
+        // Local data exists — merge remote items that aren't already local
+        var merged=false;
+        if(remote.quotes)remote.quotes.forEach(function(rq){
+          if(!DB.quotes.find(function(lq){return lq.id===rq.id;})){DB.quotes.push(rq);merged=true;}
+        });
+        if(remote.customers)remote.customers.forEach(function(rc){
+          if(!DB.customers.find(function(lc){return lc.id===rc.id;})){DB.customers.push(rc);merged=true;}
+        });
+        if(remote.receipts)remote.receipts.forEach(function(rr){
+          if(!DB.receipts.find(function(lr){return lr.id===rr.id;})){DB.receipts.push(rr);merged=true;}
+        });
+        if(remote.productions)remote.productions.forEach(function(rp){
+          if(!DB.productions.find(function(lp){return lp.id===rp.id;})){DB.productions.push(rp);merged=true;}
+        });
+        // Avoid overwriting local (newer) data — keep it in localStorage
+        if(merged)try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
+      }else if(remote.quotes&&remote.quotes.length>0){
+        // First visit — load from Supabase
         applyDataToDB(remote);
         try{localStorage.setItem('dc_erp_v2',JSON.stringify(remote));}catch(e){}
       }
