@@ -3755,37 +3755,14 @@ async function sbLoad(){
   if(_sbLoaded)return;
   _sbLoaded=true;
   try{
-    // Check what we already have locally
-    var localRaw=localStorage.getItem('dc_erp_v2');
-    var localData=localRaw?JSON.parse(localRaw):null;
-    var hasLocalData=localData&&localData.quotes&&localData.quotes.length>0;
-
     var res=await supabaseClient.from('app_data').select('key,value');
     if(res.data&&res.data.length>0){
       var remote={};
       res.data.forEach(function(r){remote[r.key]=r.value;});
-
-      if(hasLocalData){
-        // Local data exists — merge remote items that aren't already local
-        var merged=false;
-        if(remote.quotes)remote.quotes.forEach(function(rq){
-          if(!DB.quotes.find(function(lq){return lq.id===rq.id;})){DB.quotes.push(rq);merged=true;}
-        });
-        if(remote.customers)remote.customers.forEach(function(rc){
-          if(!DB.customers.find(function(lc){return lc.id===rc.id;})){DB.customers.push(rc);merged=true;}
-        });
-        if(remote.receipts)remote.receipts.forEach(function(rr){
-          if(!DB.receipts.find(function(lr){return lr.id===rr.id;})){DB.receipts.push(rr);merged=true;}
-        });
-        if(remote.productions)remote.productions.forEach(function(rp){
-          if(!DB.productions.find(function(lp){return lp.id===rp.id;})){DB.productions.push(rp);merged=true;}
-        });
-        // Avoid overwriting local (newer) data — keep it in localStorage
-        if(merged)try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
-      }else if(remote.quotes&&remote.quotes.length>0){
-        // First visit — load from Supabase
+      if(remote.quotes&&remote.quotes.length>0){
         applyDataToDB(remote);
-        try{localStorage.setItem('dc_erp_v2',JSON.stringify(remote));}catch(e){}
+        try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
+        console.log('sbLoad: loaded '+res.data.length+' keys from Supabase');
       }
     }
   }catch(e){console.error('Supabase load error:',e);}
