@@ -18,24 +18,38 @@ alter table profiles add column if not exists name text;
 
 alter table profiles enable row level security;
 
--- Admin can read all profiles
-create policy "profiles_admin_select"
-  on profiles for select
-  using (exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+-- Helper function: check if current user is admin (bypasses RLS to avoid recursion)
+create or replace function is_admin()
+returns boolean
+language sql
+stable
+security definer
+as $$
+  select exists (select 1 from profiles where id = auth.uid() and role = 'admin');
+$$;
 
 -- Users can read own profile
 create policy "profiles_self_select"
   on profiles for select
   using (id = auth.uid());
 
--- Admin can insert/update profiles
+-- Admin can read all profiles
+create policy "profiles_admin_select"
+  on profiles for select
+  using (is_admin());
+
+-- Admin can insert/update/delete profiles
 create policy "profiles_admin_insert"
   on profiles for insert
-  with check (exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+  with check (is_admin());
 
 create policy "profiles_admin_update"
   on profiles for update
-  using (exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+  using (is_admin());
+
+create policy "profiles_admin_delete"
+  on profiles for delete
+  using (is_admin());
 
 -- 2. AUTO-CREATE PROFILE ON SIGNUP
 create or replace function handle_new_user()
@@ -66,13 +80,13 @@ alter table app_data enable row level security;
 -- Admin: full CRUD
 create policy "app_data_admin_all"
   on app_data for all
-  using (exists (select 1 from profiles where id = auth.uid() and role = 'admin'))
-  with check (exists (select 1 from profiles where id = auth.uid() and role = 'admin'));
+  using (is_admin())
+  with check (is_admin());
 
 -- Sales: read only
 create policy "app_data_sales_select"
   on app_data for select
-  using (exists (select 1 from profiles where id = auth.uid() and role = 'sales'));
+  using (not is_admin() and auth.uid() is not null);
 
 -- 4. RLS ON INDIVIDUAL TABLES (for future granular access)
 -- These tables may not exist yet — safe to run, they'll apply when created.
@@ -91,8 +105,8 @@ begin
       execute format('
         drop policy if exists %I on %I;
         create policy %I on %I for all
-          using (exists (select 1 from profiles where id = auth.uid() and role = ''admin''))
-          with check (exists (select 1 from profiles where id = auth.uid() and role = ''admin''));',
+          using (is_admin())
+          with check (is_admin());',
         'admin_all_' || tbl, tbl, 'admin_all_' || tbl, tbl);
 
       -- Sales select
@@ -109,7 +123,7 @@ begin
           drop policy if exists %I on %I;
           create policy %I on %I for insert
             with check (
-              exists (select 1 from profiles where id = auth.uid() and role = ''sales'')
+              not is_admin()
               and created_by = auth.uid());',
           'sales_ins_' || tbl, tbl, 'sales_ins_' || tbl, tbl);
       end if;
