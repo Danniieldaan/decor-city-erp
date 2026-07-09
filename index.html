@@ -3724,7 +3724,7 @@ function sbSync(){
   var remaining=keys.length;
   keys.forEach(function(k){
     supabaseClient.from('app_data').upsert(
-      {key:k,value:data[k]},{onConflict:'key'})
+      {key:k,value:data[k],updated_at:new Date().toISOString()},{onConflict:'key'})
     .then(function(){remaining--;if(!remaining)_sbSyncing=false;})
     .catch(function(e){console.error('Sync error for key "'+k+'":',e);remaining--;if(!remaining)_sbSyncing=false;});
   });
@@ -3732,7 +3732,8 @@ function sbSync(){
 
 function saveDB(){
   try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
-  if(isAdmin())sbSync();
+  var u=DB.currentUser;
+  if(u&&u.role==='admin')sbSync();
 }
 function isSales(){
   return DB.currentUser&&DB.currentUser.role==='sales';
