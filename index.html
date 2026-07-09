@@ -3717,23 +3717,23 @@ function packDB(){
 }
 
 function sbSync(){
-  if(_sbSyncing)return;
-  _sbSyncing=true;
   var data=packDB();
   var keys=Object.keys(data);
-  var remaining=keys.length;
+  console.log('sbSync: syncing',keys.length,'keys');
   keys.forEach(function(k){
-    supabaseClient.from('app_data').upsert(
-      {key:k,value:data[k],updated_at:new Date().toISOString()},{onConflict:'key'})
-    .then(function(){remaining--;if(!remaining)_sbSyncing=false;})
-    .catch(function(e){console.error('Sync error for key "'+k+'":',e);remaining--;if(!remaining)_sbSyncing=false;});
+    var payload={key:k,value:data[k],updated_at:new Date().toISOString()};
+    supabaseClient.from('app_data').upsert(payload,{onConflict:'key'})
+    .then(function(res){
+      if(res.error)console.error('Sync error for "'+k+'":',res.error);
+      else console.log('Synced key:',k);
+    })
+    .catch(function(e){console.error('Sync exception for "'+k+'":',e.message||e);});
   });
 }
 
 function saveDB(){
   try{localStorage.setItem('dc_erp_v2',JSON.stringify(packDB()));}catch(e){}
-  var u=DB.currentUser;
-  if(u&&u.role==='admin')sbSync();
+  sbSync();
 }
 function isSales(){
   return DB.currentUser&&DB.currentUser.role==='sales';
