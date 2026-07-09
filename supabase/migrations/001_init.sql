@@ -12,6 +12,10 @@ create table if not exists profiles (
   created_at timestamptz default now()
 );
 
+-- Fix: add email column if table already existed without it
+alter table profiles add column if not exists email text;
+alter table profiles add column if not exists name text;
+
 alter table profiles enable row level security;
 
 -- Admin can read all profiles
