@@ -271,7 +271,7 @@ input.stg-date{width:100%;font-size:0.5625rem;padding:0.0625rem 0.125rem;border:
 
 /* Print styles */
 .print-frame{font-family:'Times New Roman',serif;color:#000;background:#fff;padding:0}
-@media print{body *{visibility:hidden}.print-frame,.print-frame *{visibility:visible}.print-frame{position:fixed;left:0;top:0;width:100%;padding:20px;z-index:9999}}
+@media print{body *{visibility:hidden}.print-frame,.print-frame *{visibility:visible}.print-frame{position:fixed;left:0;top:0;width:100%;padding:20px;z-index:9999;overflow:visible}.print-frame [style*="overflow"]{overflow:visible!important}}
 
 /* Animations */
 @keyframes fadeIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
@@ -2608,7 +2608,7 @@ function printProdJobs(jobs,title){
       '<td style="padding:3px 4px;border:1px solid #d1d5db;text-align:center;font-size:11px"><span style="background:#e0f2fe;color:#0369a1;padding:1px 8px;border-radius:999px;font-weight:600;font-size:10px">'+tier+'</span></td>'+
       stageCells+
       artisanCell+
-      '<td style="padding:3px 4px;border:1px solid #d1d5db;text-align:center;font-size:11px"><span style="background:#dcfce7;color:#15803d;padding:1px 8px;border-radius:999px;font-weight:600;font-size:10px">'+statusText+'</span></td>'+
+      '<td style="padding:3px 4px;border:1px solid #d1d5db;text-align:center;font-size:11px;overflow:hidden"><span style="background:#dcfce7;color:#15803d;padding:1px 6px;border-radius:999px;font-weight:600;font-size:10px;white-space:nowrap">'+statusText+'</span></td>'+
     '</tr>';
   }).join('');
   var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
@@ -2617,14 +2617,13 @@ function printProdJobs(jobs,title){
       '<div><h1 style="font-size:18px;color:#2563eb;margin:0;font-weight:700">'+esc(title)+'</h1></div>'+
       '<div style="text-align:right;font-size:11px;color:#64748b">Printed: '+today+'</div>'+
     '</div>'+
-    '<div style="overflow-x:auto">'+
     '<table style="width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed">'+
       '<colgroup>'+
         '<col style="width:12%"/>'+
         '<col style="width:12%"/>'+
         '<col style="width:10%"/>'+
         '<col style="width:7%"/>'+
-        (stageKeys.map(function(){return'<col style="width:'+Math.max(8,Math.floor(56/stageKeys.length))+'%"/>';}).join(''))+
+        (function(){var r=36/stageKeys.length;return stageKeys.map(function(){return'<col style="width:'+Math.max(5,Math.floor(r))+'%"/>';}).join('');})()+
         '<col style="width:15%"/>'+
         '<col style="width:8%"/>'+
       '</colgroup>'+
@@ -2638,7 +2637,7 @@ function printProdJobs(jobs,title){
         '<th style="padding:3px 4px;font-size:9px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:center">Status</th>'+
       '</tr></thead><tbody>'+
       rows+
-    '</tbody></table></div></div></div>';
+    '</tbody></table></div></div>';
   showPrint(html);
 }
 var cplSel=[];
@@ -3060,7 +3059,7 @@ function printPayrollWeek(wk){
     p.stages.forEach(function(st){if(stageKeys.indexOf(st.sk)===-1)stageKeys.push(st.sk);});
   });
   var stageHeader=stageKeys.map(function(sk){
-    return'<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.04em;text-align:center;border:1px solid #d1d5db;background:#f1f5f9">'+(SL[sk]||sk)+'</th>';
+    return'<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.03em;text-align:center;border:1px solid #d1d5db;background:#f1f5f9">'+(SL[sk]||sk)+'</th>';
   }).join('');
   var rows=relevant.map(function(p){
     var w=p.w||0;var h=p.h||0;var unit=p.unit||'cm';
@@ -3069,15 +3068,15 @@ function printPayrollWeek(wk){
     var jobId=p.jobId||'#'+p.id;
     var stageCells=stageKeys.map(function(sk){
       var st=p.stages.find(function(x){return x.sk===sk;});
-      if(!st)return'<td style="text-align:center;padding:6px 10px;border:1px solid #d1d5db;color:#94a3b8;font-size:13px">\u2014</td>';
+      if(!st)return'<td style="text-align:center;padding:4px 5px;border:1px solid #d1d5db;color:#94a3b8;font-size:11px">\u2014</td>';
       var artList=(st.artisans||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
       if(st.date&&getWeekStart(st.dateOverride||st.date)===wk){
         var artDisp=artList.length?artList.join(', '):'\u2713';
-        return'<td style="text-align:center;padding:6px 10px;border:1px solid #d1d5db;background:#dcfce7;font-size:13px">'+
-          '<div style="color:#16a34a;font-weight:600">'+esc(artDisp)+'</div>'+
-          '<div style="font-size:10px;color:#64748b">'+fd(st.dateOverride||st.date)+'</div></td>';
+        return'<td style="text-align:center;padding:4px 5px;border:1px solid #d1d5db;background:#dcfce7;font-size:11px">'+
+          '<div style="color:#16a34a;font-weight:600;font-size:10px">'+esc(artDisp)+'</div>'+
+          '<div style="font-size:9px;color:#64748b">'+fd(st.dateOverride||st.date)+'</div></td>';
       }
-      return'<td style="text-align:center;padding:6px 10px;border:1px solid #d1d5db;color:#94a3b8;font-size:13px">\u2014</td>';
+      return'<td style="text-align:center;padding:4px 5px;border:1px solid #d1d5db;color:#94a3b8;font-size:11px">\u2014</td>';
     }).join('');
     // Calculate artisan earnings for this job (this week only)
     var jobArtisanEarnings={};
@@ -3090,37 +3089,42 @@ function printPayrollWeek(wk){
     });
     var artNames=Object.keys(jobArtisanEarnings);
     var artisanCell=artNames.length?
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;font-size:13px;white-space:nowrap">'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;font-size:11px;word-break:break-word">'+
       artNames.map(function(n){return'<div style="padding:1px 0"><strong>'+esc(n)+'</strong>: '+fmt(jobArtisanEarnings[n])+'</div>';}).join('')+
       '</td>':
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;color:#94a3b8;font-size:13px">\u2014</td>';
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;text-align:center;color:#94a3b8;font-size:11px">\u2014</td>';
     var done=p.stages.filter(function(s){return s.date;}).length;
     var total=p.stages.length;
     var statusText=done===total?'Completed':done+'/'+total+' stages';
     return'<tr>'+
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;font-family:monospace;font-size:13px">'+esc(jobId)+'</td>'+
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;font-weight:600;font-size:13px">'+esc(p.ft)+'</td>'+
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;font-size:13px">'+dim+'</td>'+
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-size:13px"><span style="background:#e0f2fe;color:#0369a1;padding:2px 12px;border-radius:999px;font-weight:600;font-size:12px">'+tier+'</span></td>'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;font-family:monospace;font-size:11px">'+esc(jobId)+'</td>'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;font-weight:600;font-size:11px">'+esc(p.ft)+'</td>'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;font-size:11px">'+dim+'</td>'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;text-align:center;font-size:11px"><span style="background:#e0f2fe;color:#0369a1;padding:1px 8px;border-radius:999px;font-weight:600;font-size:10px">'+tier+'</span></td>'+
       stageCells+
       artisanCell+
-      '<td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-size:13px"><span style="background:#dcfce7;color:#15803d;padding:2px 12px;border-radius:999px;font-weight:600;font-size:12px">'+statusText+'</span></td>'+
+      '<td style="padding:4px 5px;border:1px solid #d1d5db;text-align:center;font-size:11px"><span style="background:#dcfce7;color:#15803d;padding:1px 8px;border-radius:999px;font-weight:600;font-size:10px;white-space:nowrap">'+statusText+'</span></td>'+
     '</tr>';
   }).join('');
-  var html='<div class="print-frame"><div style="max-width:1100px;margin:0 auto;padding:30px;font-family:Inter,system-ui,sans-serif;color:#0f172a;background:#fff">'+
-    '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #2563eb;padding-bottom:16px;margin-bottom:20px">'+
-      '<div><h1 style="font-size:24px;color:#2563eb;margin:0;font-weight:700">Weekly Job Breakdown</h1></div>'+
-      '<div style="text-align:right;font-size:12px;color:#64748b">'+formatWeekLabel(wk)+'</div>'+
+  var stageW=Math.floor(44/stageKeys.length);
+  var colgroup='<col style="width:10%"/><col style="width:12%"/><col style="width:9%"/><col style="width:6%"/>'+
+    stageKeys.map(function(){return'<col style="width:'+stageW+'%"/>';}).join('')+
+    '<col style="width:12%"/><col style="width:7%"/>';
+  var html='<div class="print-frame"><div style="max-width:100%;margin:0 auto;padding:20px;font-family:Inter,system-ui,sans-serif;color:#0f172a;background:#fff">'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #2563eb;padding-bottom:12px;margin-bottom:14px">'+
+      '<div><h1 style="font-size:18px;color:#2563eb;margin:0;font-weight:700">Weekly Job Breakdown</h1></div>'+
+      '<div style="text-align:right;font-size:11px;color:#64748b">'+formatWeekLabel(wk)+'</div>'+
     '</div>'+
-    '<table style="width:100%;border-collapse:collapse;font-size:12px">'+
+    '<table style="width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed">'+
+      '<colgroup>'+colgroup+'</colgroup>'+
       '<thead><tr>'+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Job ID</th>'+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Frame Type</th>'+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Size</th>'+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:center">Tier</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Job ID</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Frame Type</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Size</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:center">Tier</th>'+
         stageHeader+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Artisans (Earnings)</th>'+
-        '<th style="padding:6px 10px;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:center">Status</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:left">Artisans (Earnings)</th>'+
+        '<th style="padding:4px 5px;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;border:1px solid #d1d5db;background:#f1f5f9;text-align:center">Status</th>'+
       '</tr></thead><tbody>'+
       rows+
     '</tbody></table></div></div>';
@@ -4395,8 +4399,8 @@ function updateCustBal(cid){
   }
 }
 // ============ PERSISTENCE ============
-const SUPABASE_URL = 'https://vclgdiuiqqjoyrqpyalt.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjbGdkaXVpcXFqb3lycXB5YWx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MDk4MjQsImV4cCI6MjA5OTE4NTgyNH0.Qxg_1QMe1WtiVc6gqGFfZqz5RZmTOkwLl-zwIX1kG4w';
+const SUPABASE_URL = 'https://ujblogfdxxktendnzjlg.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqYmxvZ2ZkeHhrdGVuZG56amxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MTAyMDIsImV4cCI6MjA5ODk4NjIwMn0.Pi9U7-qf3iSG8sKz8Vs75YoC1CR5OYdVcEVFs7zwJAA';
 var supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{storage:window.sessionStorage}});
 var _sbSyncing = false;
 var _inactiveTimer = null;
