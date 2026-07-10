@@ -35,6 +35,12 @@
 - No real-time push (requires refresh to see other users' changes)
 - Edge functions deployed but usage may need verification
 - Tailwind CDN warning is cosmetic (fine for dev/SMB use)
+- Delivery fee field added to invoices: stored as `delFee` on quote, included in grand total, shown in table, preview, and print
+- Design Fee field added to invoices: numeric amount `designFee`, shown in table column, totals panel, included in grand total; only appears in print/preview if > 0
+- Terms/Message textarea now auto-expands to fit content; company bank details shown below the textarea in form, preview, and print (above Terms & Conditions)
+- Monthly Sales Report has a filter dropdown: All Invoices / Customers with Balance / Part Payment / Full Payment; filters apply to display, print, and Excel export
+- Completed Jobs page: filter dropdown (All Time / This Week / This Month) using last production stage date; Print button with payroll-style layout
+- All Jobs page: filter dropdown (All / Logged This Week/Month / Due This Week/Month); Print button with payroll-style layout
 
 ## How to Deploy Changes
 1. Edit files locally
