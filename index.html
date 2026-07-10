@@ -1092,7 +1092,7 @@ function mkLI(){return{id:'t'+Date.now(),ft:'',qty:1,unit:'cm',w:null,h:null,des
 var invSel=[];
 function pgInvoices(){
   invSel=[];
-  var qs=DB.quotes.slice().sort(function(a,b){return b.id-a.id;}).map(function(q){var cu=DB.customers.find(function(c){return c.id===q.cid;});var t=qT(q.id);var ic=DB.items.filter(function(i){return i.qid===q.id;}).length;return{q:q,cu:cu,t:t,ic:ic};});
+  var qs=DB.quotes.slice().sort(function(a,b){return b.id-a.id;}).map(function(q){var cu=DB.customers.find(function(c){return c.id===q.cid;});var t=qT(q.id);var ic=DB.items.filter(function(i){return i.qid===q.id;}).reduce(function(s,i){return s+(i.qty||1);},0);return{q:q,cu:cu,t:t,ic:ic};});
   set('<div class="ph"><div class="pt">Invoices</div><div class="ptb"><button class="btn btn-primary" onclick="go(\'invoice_new\')">Process Invoice</button></div></div>'+
   '<div class="pnl"><div class="pnlh">All Invoices <span class="font-normal text-slate-400 text-xs">'+DB.quotes.length+' documents</span></div>'+
   '<div class="actb">'+
@@ -1110,7 +1110,7 @@ function pgInvoices(){
       '<a onclick="vddSel(this,\'invoiced\')" data-key="invoiced">Invoiced</a>'+
       '<a onclick="vddSel(this,\'has_balance\')" data-key="has_balance">Customers with Balance</a>'+
     '</div></div></div>'+
-  '<table class="dt"><thead><tr><th class="w-8"><input type="checkbox" class="cb" onchange="iSelAll(this.checked)"/></th><th>#</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Discount</th><th>Delivery</th><th>Design</th><th>Grand Total</th><th>Paid</th><th>Balance</th><th>Status</th><th></th></tr></thead><tbody id="qbody">'+
+  '<table class="dt"><thead><tr><th class="w-8"><input type="checkbox" class="cb" onchange="iSelAll(this.checked)"/></th><th>#</th><th>Customer</th><th>Date</th><th>Qty</th><th>Total</th><th>Discount</th><th>Delivery</th><th>Design</th><th>Grand Total</th><th>Paid</th><th>Balance</th><th>Status</th><th></th></tr></thead><tbody id="qbody">'+
   qs.map(function(o,i){var q=o.q,cu=o.cu,t=o.t;return'<tr class="qrow" data-cust="'+(cu?cu.name.toLowerCase():'')+'" data-date="'+q.date+'" data-exp="'+(q.exp||'')+'" data-stat="'+q.stat+'" data-id="'+q.id+'"><td><input type="checkbox" class="cb" onchange="iSelRow('+q.id+',this.checked)"/></td><td><code>'+invNum(q.id,q.date)+'</code></td><td class="font-semibold text-primary cursor-pointer" onclick="pgQF('+q.id+')">'+(cu?esc(cu.name):'\u2014')+'</td><td>'+fd(q.date)+'</td><td class="text-center">'+o.ic+'</td><td class="money">'+fmt(t.sub)+'</td><td class="money mr">'+fmt(t.disc)+'</td><td class="money">'+fmt(t.delFee)+'</td><td class="money">'+fmt(t.designFee)+'</td><td class="money font-bold">'+fmt(t.grand)+'</td><td class="money mg">'+fmt(t.dep)+'</td><td class="money '+(t.bal>0?'mr':'')+'">'+fmt(t.bal)+'</td><td><span class="sp '+sc(q.stat)+'">'+q.stat+'</span></td><td><div class="ddw"><a class="text-primary cursor-pointer text-xs no-underline" onclick="event.stopPropagation();toggleDD(\'qact_'+q.id+'\',this)">Actions ▾</a><div class="ddm" id="qact_'+q.id+'">'+
     '<a onclick="quickViewQ('+q.id+')">Preview</a>'+
     '<a onclick="printQ('+q.id+')">Print</a>'+
