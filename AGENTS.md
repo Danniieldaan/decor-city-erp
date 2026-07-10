@@ -35,12 +35,22 @@
 - No real-time push (requires refresh to see other users' changes)
 - Edge functions deployed but usage may need verification
 - Tailwind CDN warning is cosmetic (fine for dev/SMB use)
-- Delivery fee field added to invoices: stored as `delFee` on quote, included in grand total, shown in table, preview, and print
-- Design Fee field added to invoices: numeric amount `designFee`, shown in table column, totals panel, included in grand total; only appears in print/preview if > 0
-- Terms/Message textarea now auto-expands to fit content; company bank details shown below the textarea in form, preview, and print (above Terms & Conditions)
-- Monthly Sales Report has a filter dropdown: All Invoices / Customers with Balance / Part Payment / Full Payment; filters apply to display, print, and Excel export
-- Completed Jobs page: filter dropdown (All Time / This Week / This Month) using last production stage date; Print button with payroll-style layout
-- All Jobs page: filter dropdown (All / Logged This Week/Month / Due This Week/Month); Print button with payroll-style layout
+- **Accounting tab** replaced the old Reports tab; `pgAccounting()` landing page with 4 KPI cards, AR aging tiles, activity data table, quick-action footer
+- **Sidebar** restructured into 3 grouped sections (Overview, TRANSACTIONS, REPORTS) with section labels; `buildSB()` skips empty labels
+- **Button system**: `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-success`, `.btn-destructive`, `.btn-sm`, `.btn-xs` CSS classes; 64 inline button strings replaced
+- **Bug fixes**: removed duplicate "Add Invoice" link (#3); added `.sr` CSS class for 90+ day/unpaid badges (#5); added `fmtC()` compact formatter (#9)
+- **Print fixes**: scrollbars hidden in print via `overflow:visible`; payroll print uses `table-layout:fixed` + colgroup; production print no longer wraps in `overflow-x:auto` div; status badges clipped to cell with `overflow:hidden`
+- **Delivery/Design Fees**: `delFee` and `designFee` on invoices, included in grand total, shown in table/preview/print
+- **Terms & Bank Details**: auto-expanding textarea; bank details shown in form, preview, and print
+- **Monthly Sales Report**: filter (All / With Balance / Part Payment / Full Payment), print + Excel export
+- **Production**: Completed Jobs + All Jobs with filter dropdowns and payroll-style print layout
+- **Dark mode**: auto-detects `prefers-color-scheme` on first load
+- **Supabase URL**: hardcoded in `index.html:4402` — **currently points to LIVE project** (`ujblogfdxxktendnzjlg`). Do NOT change to dev project unless testing locally against dev data.
+- **Staff users live in LIVE project**. Admin user was created in DEV previously. The commit `8142bd0` accidentally switched the URL to DEV, breaking staff login. Fixed in `ce1f118`.
+- **All Invoices page** now shows total frame Qty (sum of `qty` across line items) instead of line item count. Column header: **Qty**.
+
+## Active / To-Do
+- (none currently)
 
 ## How to Deploy Changes
 1. Edit files locally
