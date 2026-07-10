@@ -39,7 +39,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#f8fafc;color:#0f172a;f
 /* Page Headers */
 .ph{background:#fff;border-bottom:1px solid #e2e8f0;padding:0 1.25rem;height:3rem;display:flex;align-items:center;gap:0.625rem;flex-shrink:0}
 .dark .ph{background:#0f172a;border-color:#334155}
-.pt{font-size:1.125rem;font-weight:700}.ps{font-size:0.75rem;color:#94a3b8}.ptb{display:flex;gap:0.5rem;margin-left:auto}
+.pt{font-size:1.125rem;font-weight:700}.ps{font-size:0.75rem;color:#64748b}.dark .ps{color:#94a3b8}.ptb{display:flex;gap:0.5rem;margin-left:auto}
 
 /* Panels/Cards */
 .pnl{background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;margin:0.75rem;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -100,6 +100,14 @@ body{font-family:'Inter',system-ui,sans-serif;background:#f8fafc;color:#0f172a;f
 .spr{background:#fed7aa;color:#9a3412}.dark .spr{background:rgba(217,119,6,.15);color:#fbbf24}
 .sco{background:#dcfce7;color:#15803d}.dark .sco{background:rgba(22,163,74,.15);color:#4ade80}
 .sin{background:#fae8ff;color:#86198f}.dark .sin{background:rgba(168,85,247,.15);color:#c084fc}
+.sr{background:#fee2e2;color:#991b1b}.dark .sr{background:rgba(220,38,38,.15);color:#fca5a5}
+.btn{display:inline-flex;align-items:center;gap:0.375rem;border-radius:0.5rem;font-weight:600;transition:all .15s;cursor:pointer;white-space:nowrap;font-family:'Inter',system-ui,sans-serif;user-select:none;border:1px solid;line-height:1;height:2.25rem;padding:0 1rem;font-size:0.875rem;text-decoration:none}.btn:active{transform:scale(0.95)}
+.btn-sm{height:2rem;padding:0 0.75rem;font-size:0.75rem}
+.btn-xs{height:1.5rem;padding:0 0.5rem;font-size:0.75rem}
+.btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}.btn-primary:hover{background:rgba(37,99,235,.9)}.dark .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}.dark .btn-primary:hover{background:rgba(37,99,235,.8)}
+.btn-secondary{background:#fff;color:#475569;border-color:#e2e8f0}.btn-secondary:hover{background:#f8fafc}.dark .btn-secondary{background:#1e293b;color:#cbd5e1;border-color:#475569}.dark .btn-secondary:hover{background:#334155}
+.btn-success{background:#16a34a;color:#fff;border-color:#16a34a}.btn-success:hover{background:rgba(22,163,74,.9)}.dark .btn-success{background:#16a34a;color:#fff;border-color:#16a34a}.dark .btn-success:hover{background:rgba(22,163,74,.8)}
+.btn-destructive{background:#dc2626;color:#fff;border-color:#dc2626}.btn-destructive:hover{background:rgba(220,38,38,.9)}.dark .btn-destructive{background:#dc2626;color:#fff;border-color:#dc2626}.dark .btn-destructive:hover{background:rgba(220,38,38,.8)}
 .ssm{background:#e0f2fe;color:#0369a1}.dark .ssm{background:rgba(14,165,233,.15);color:#38bdf8}
 .smd{background:#fae8ff;color:#86198f}.dark .smd{background:rgba(168,85,247,.15);color:#c084fc}
 .slg{background:#ede9fe;color:#6d28d9}.dark .slg{background:rgba(139,92,246,.15);color:#a78bfa}
@@ -171,11 +179,11 @@ code{font-size:0.75rem;background:#f1f5f9;padding:0.0625rem 0.375rem;border-radi
 .kb:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-2px)}
 .dark .kb:hover{box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .kb.g{border-top-color:#16a34a}.kb.o{border-top-color:#d97706}.kb.r{border-top-color:#dc2626}
-.kl{font-size:0.625rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.1875rem}
-.dark .kl{color:#64748b}
+.kl{font-size:0.625rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.1875rem}
+.dark .kl{color:#94a3b8}
 .kv{font-size:1.25rem;font-weight:800;letter-spacing:-0.03em}
-.ks{font-size:0.625rem;color:#94a3b8;margin-top:0.125rem}
-.dark .ks{color:#64748b}
+.ks{font-size:0.625rem;color:#64748b;margin-top:0.125rem}
+.dark .ks{color:#94a3b8}
 
 /* Sidebar */
 .si.on{border-left-color:#8b5cf6;background:rgba(139,92,246,.08);color:#fff;font-weight:600}
@@ -280,7 +288,7 @@ input.stg-date{width:100%;font-size:0.5625rem;padding:0.0625rem 0.125rem;border:
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="customers" onclick="nav(this)">Customers</a>
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="invoices" onclick="nav(this)">Invoices</a>
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="receipts" onclick="nav(this)">Receipts</a>
-    <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="r_outstanding" onclick="nav(this)">Reports</a>
+    <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="accounting" onclick="nav(this)">Accounting</a>
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="production" onclick="nav(this)">Production</a>
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="payroll" onclick="nav(this)">Payroll</a>
     <a class="ti flex items-center px-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all duration-150" data-pg="settings" onclick="nav(this)">Settings</a>
@@ -511,6 +519,7 @@ var ARTISANS=['Kunle','Yomi','Emma'];
 var REPS=['Kunle','Yomi','Emma'];
 
 var fmt=function(n){return'\u20a6'+Number(n||0).toLocaleString('en-NG',{minimumFractionDigits:2});};
+var fmtC=function(n){var v=Number(n||0);if(v>=1000000)return'\u20a6'+(v/1000000).toFixed(1).replace(/\.0$/,'')+'M';if(v>=1000)return'\u20a6'+(v/1000).toFixed(1).replace(/\.0$/,'')+'K';return fmt(v);};
 var fd=function(d){return d?new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric'}):'';};
 var fdl=function(d){return d?new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}):'\u2014';};
 var sc=function(s){return({Draft:'sdr',Issued:'ssn','In Progress':'spr',Completed:'sco',Invoiced:'sin'}[s]||'sdr');};
@@ -576,10 +585,31 @@ var SBs={
   production:[{lbl:'Shop Floor',items:[{i:'+',t:'New Job',p:'prod_new'},{i:'\u2630',t:'All Jobs',p:'prod_all'},{i:'\u2630',t:'Active Jobs',p:'production'},{i:'\u2692',t:'Completed Jobs',p:'prod_log'},{i:'\ud83d\udcc5',t:'Dates Log',p:'dates'}]}],
   payroll:[{lbl:'Payroll',items:[{i:'\u20a6',t:'Weekly Payslips',p:'payroll'},{i:'\ud83d\udc64',t:'Workers',p:'workers'},{i:'\ud83c\udcca',t:'Performance',p:'performance'}]}],
   settings:[{lbl:'Settings',items:[{i:'\u2699',t:'General Settings',p:'settings'}]}],
-  r_outstanding:[{lbl:'Reports',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'Days Outstanding',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Transactions',p:'r_transactions'}]}],
-  r_sales:[{lbl:'Reports',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'Days Outstanding',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Transactions',p:'r_transactions'}]}],
-  r_transactions:[{lbl:'Reports',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'Days Outstanding',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Transactions',p:'r_transactions'}]}],
-  r_sales_report:[{lbl:'Reports',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'Days Outstanding',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Transactions',p:'r_transactions'}]}]
+  accounting:[
+    {lbl:'',items:[{i:'\ud83d\udcca',t:'Overview',p:'accounting'}]},
+    {lbl:'TRANSACTIONS',items:[{i:'+',t:'Process Invoice',p:'invoice_new'},{i:'\u2630',t:'All Invoices',p:'invoices'},{i:'+',t:'New Receipt',p:'receipt_new'},{i:'\u2630',t:'All Receipts',p:'receipts'}]},
+    {lbl:'REPORTS',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'AR Aging',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Ledger',p:'r_transactions'}]}
+  ],
+  r_sales_report:[
+    {lbl:'',items:[{i:'\ud83d\udcca',t:'Overview',p:'accounting'}]},
+    {lbl:'TRANSACTIONS',items:[{i:'+',t:'Process Invoice',p:'invoice_new'},{i:'\u2630',t:'All Invoices',p:'invoices'},{i:'+',t:'New Receipt',p:'receipt_new'},{i:'\u2630',t:'All Receipts',p:'receipts'}]},
+    {lbl:'REPORTS',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'AR Aging',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Ledger',p:'r_transactions'}]}
+  ],
+  r_outstanding:[
+    {lbl:'',items:[{i:'\ud83d\udcca',t:'Overview',p:'accounting'}]},
+    {lbl:'TRANSACTIONS',items:[{i:'+',t:'Process Invoice',p:'invoice_new'},{i:'\u2630',t:'All Invoices',p:'invoices'},{i:'+',t:'New Receipt',p:'receipt_new'},{i:'\u2630',t:'All Receipts',p:'receipts'}]},
+    {lbl:'REPORTS',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'AR Aging',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Ledger',p:'r_transactions'}]}
+  ],
+  r_sales:[
+    {lbl:'',items:[{i:'\ud83d\udcca',t:'Overview',p:'accounting'}]},
+    {lbl:'TRANSACTIONS',items:[{i:'+',t:'Process Invoice',p:'invoice_new'},{i:'\u2630',t:'All Invoices',p:'invoices'},{i:'+',t:'New Receipt',p:'receipt_new'},{i:'\u2630',t:'All Receipts',p:'receipts'}]},
+    {lbl:'REPORTS',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'AR Aging',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Ledger',p:'r_transactions'}]}
+  ],
+  r_transactions:[
+    {lbl:'',items:[{i:'\ud83d\udcca',t:'Overview',p:'accounting'}]},
+    {lbl:'TRANSACTIONS',items:[{i:'+',t:'Process Invoice',p:'invoice_new'},{i:'\u2630',t:'All Invoices',p:'invoices'},{i:'+',t:'New Receipt',p:'receipt_new'},{i:'\u2630',t:'All Receipts',p:'receipts'}]},
+    {lbl:'REPORTS',items:[{i:'\ud83d\udcca',t:'Sales Report',p:'r_sales_report'},{i:'\ud83d\udcca',t:'AR Aging',p:'r_outstanding'},{i:'\ud83d\udcca',t:'Sales by Customer',p:'r_sales'},{i:'\ud83d\udcca',t:'Customer Ledger',p:'r_transactions'}]}
+  ]
 };
 var curNav='dashboard';
 function nav(el){
@@ -591,9 +621,9 @@ function nav(el){
 }
 function buildSB(n){
   document.getElementById('sb').innerHTML=(SBs[n]||[]).map(function(s){
-    return'<div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[1.5px] px-4 pt-4 pb-1">'+s.lbl+'</div>'+s.items.map(function(i){
+    return(s.lbl?'<div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[1.5px] px-4 pt-4 pb-1">'+s.lbl+'</div>':'')+s.items.map(function(i){
       var perm=true;
-      if((i.p==='r_outstanding'||i.p==='r_sales'||i.p==='r_transactions'||i.p==='r_sales_report')&&!hasPermission('reports'))perm=false;
+      if((i.p==='accounting'||i.p==='r_outstanding'||i.p==='r_sales'||i.p==='r_transactions'||i.p==='r_sales_report')&&!hasPermission('reports'))perm=false;
       if((i.p==='prod_new'||i.p==='prod_all'||i.p==='production'||i.p==='prod_log'||i.p==='dates')&&!hasPermission('production'))perm=false;
       if((i.p==='payroll'||i.p==='workers'||i.p==='performance')&&!hasPermission('payroll'))perm=false;
       if(i.p==='settings'&&!hasPermission('settings'))perm=false;
@@ -601,6 +631,112 @@ function buildSB(n){
       return'<div class="si flex items-center gap-2.5 px-4 py-2 text-sm text-slate-300 dark:text-slate-400 hover:text-white hover:bg-white/5 dark:hover:bg-white/5 cursor-pointer border-l-[3px] border-transparent hover:border-accent transition-all duration-150" onclick="go(\''+i.p+'\')">'+i.i+' '+i.t+'</div>';
     }).join('')+'<div class="h-px bg-slate-700/50 dark:bg-slate-700/30 my-1.5 mx-3"></div>';
   }).join('');
+}
+
+// ============ ACCOUNTING ============
+function pgAccounting(){
+  var today=localDate(),thisMonth=today.substring(0,7);
+  var monthName=new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'});
+  var allQs=DB.quotes.filter(function(q){return q.stat!=='Cancelled';});
+  var accQs=DB.quotes.filter(function(q){return q.stat==='Completed'||q.stat==='In Progress';});
+  var totalRev=accQs.reduce(function(s,q){return s+qT(q.id).grand;},0);
+  var collected=DB.receipts.filter(function(r){return r.date&&r.date.substring(0,7)===thisMonth;}).reduce(function(s,r){return s+r.amount;},0);
+  var outAR=0,overdue8=0;
+  var cutoff8=new Date();cutoff8.setDate(cutoff8.getDate()-8);
+  var cutoff8s=cutoff8.toISOString().split('T')[0];
+  allQs.forEach(function(q){
+    var t=qT(q.id);
+    if(t.bal>0){
+      outAR+=t.bal;
+      if(q.date&&q.date<cutoff8s)overdue8+=t.bal;
+    }
+  });
+  // AR Aging buckets (0-7d, 8-30, 31-60, 61-90, 90+)
+  var now=new Date();
+  function ageDays(d){return Math.floor((now-new Date(d))/(1000*60*60*24));}
+  var agC=0,ag8=0,ag31=0,ag61=0,ag90p=0;
+  var cntC=0,cnt8=0,cnt31=0,cnt61=0,cnt90p=0;
+  allQs.forEach(function(q){
+    var t=qT(q.id);
+    if(t.bal<=0||!q.date)return;
+    var dd=ageDays(q.date);
+    if(dd<=7){agC+=t.bal;cntC++;}
+    else if(dd<=30){ag8+=t.bal;cnt8++;}
+    else if(dd<=60){ag31+=t.bal;cnt31++;}
+    else if(dd<=90){ag61+=t.bal;cnt61++;}
+    else{ag90p+=t.bal;cnt90p++;}
+  });
+  function agTile(lbl,amt,cnt,clr,tclr){
+    return'<div class="rounded-lg border border-border dark:border-slate-700 p-3 text-center"><div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide mb-1.5">'+lbl+'</div><div class="text-lg font-extrabold '+tclr+'">'+fmtC(amt)+'</div><div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">'+(cnt===1?'1 invoice':cnt+' invoices')+'</div></div>';
+  }
+  function scBadge(s){
+    var m={Draft:'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300',Issued:'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400','In Progress':'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',Completed:'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',Cancelled:'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',Invoiced:'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400'};
+    return'<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold '+(m[s]||'bg-slate-100 text-slate-600')+'">'+s.toUpperCase()+'</span>';
+  }
+  function pmBadge(m){
+    var m2={'Bank Transfer':'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',Cash:'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',POS:'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',Cheque:'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400'};
+    return'<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold '+(m2[m]||'bg-slate-100 text-slate-600')+'">'+esc(m).toUpperCase()+'</span>';
+  }
+  // Combined activity
+  var acts=[];
+  allQs.forEach(function(q){
+    var t=qT(q.id);
+    var cu=DB.customers.find(function(c){return c.id===q.cid;});
+    acts.push({d:q.date||'',ty:'inv',ref:invNum(q.id,q.date),cu:cu?cu.name:'-',amt:t.grand,bal:t.bal,status:q.stat,qid:q.id});
+  });
+  DB.receipts.forEach(function(r){
+    var q=DB.quotes.find(function(x){return x.id===r.qid;});
+    var cu=DB.customers.find(function(c){return c.id===(r.cid||(q?q.cid:0));});
+    var t=q?qT(r.qid):{bal:0};
+    acts.push({d:r.date||'',ty:'rcpt',ref:rcptNum(r.id),cu:cu?cu.name:'-',amt:r.amount,bal:t.bal,status:r.method,rid:r.id});
+  });
+  acts.sort(function(a,b){return b.d.localeCompare(a.d);});
+  acts=acts.slice(0,15);
+  var actH=acts.length?'<div class="overflow-x-auto"><table class="dt text-xs w-full"><thead><tr><th class="text-left">DATE</th><th class="text-left">TYPE</th><th class="text-left">REFERENCE</th><th class="text-left">CUSTOMER</th><th class="text-right">AMOUNT</th><th class="text-right">BALANCE</th><th class="text-left">STATUS</th></tr></thead><tbody>'+
+    acts.map(function(a){
+      var typeHtml=a.ty==='inv'?'<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">INVOICE</span>':'<span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">RECEIPT</span>';
+      var refHtml=a.ty==='inv'?'<a class="text-primary cursor-pointer hover:underline" onclick="quickViewQ('+a.qid+')">'+esc(a.ref)+'</a>':'<a class="text-primary cursor-pointer hover:underline" onclick="quickViewR('+a.rid+')">'+esc(a.ref)+'</a>';
+      var balHtml=a.bal<=0?'\u2014':'<span class="text-red-600 font-semibold">'+fmt(a.bal)+'</span>';
+      var statHtml=a.ty==='inv'?scBadge(a.status):pmBadge(a.status);
+      return'<tr>'+
+        '<td class="whitespace-nowrap">'+fd(a.d)+'</td>'+
+        '<td>'+typeHtml+'</td>'+
+        '<td class="font-mono">'+refHtml+'</td>'+
+        '<td>'+esc(a.cu)+'</td>'+
+        '<td class="text-right font-semibold whitespace-nowrap">'+fmt(a.amt)+'</td>'+
+        '<td class="text-right whitespace-nowrap">'+balHtml+'</td>'+
+        '<td>'+statHtml+'</td>'+
+      '</tr>';
+    }).join('')+'</tbody></table></div>':'<div class="text-xs text-slate-400 py-6 text-center">No recent activity</div>';
+  // Quick actions footer
+  function qaCard(icon,title,sub,pg){
+    return'<div class="flex flex-col items-center justify-center p-4 rounded-lg border border-border dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all active:scale-[0.98]" onclick="go(\''+pg+'\')"><div class="text-lg mb-1.5">'+icon+'</div><div class="text-xs font-bold text-slate-700 dark:text-slate-200">'+title+'</div><div class="text-[10px] text-slate-400">'+sub+'</div></div>';
+  }
+  var qaH=qaCard('\uD83D\uDCC4','Process Invoice','Create a new invoice','invoice_new')+
+    qaCard('\uD83D\uDCB3','New Receipt','Record a payment','receipt_new')+
+    qaCard('\uD83D\uDCCA','AR Aging Report','Days outstanding by invoice','r_outstanding')+
+    qaCard('\uD83D\uDCD6','Customer Ledger','Full transaction history','r_transactions');
+  set('<div class="ph"><div class="pt">Accounting</div><div class="ps">Overview & accounts receivable</div><div class="ptb">'+
+    '<button class="btn btn-secondary btn-sm" onclick="go(\'receipt_new\')">New Receipt</button>'+
+    '<button class="btn btn-primary btn-sm" onclick="go(\'invoice_new\')">Process Invoice</button>'+
+    '</div></div>'+
+    '<div class="kbar"><div class="kb"><div class="kl">Total Revenue</div><div class="kv mb">'+fmt(totalRev)+'</div><div class="ks">Completed & in-progress invoices</div></div>'+
+    '<div class="kb g"><div class="kl">Collected This Month</div><div class="kv text-success">'+fmt(collected)+'</div><div class="ks">'+monthName+'</div></div>'+
+    '<div class="kb o"><div class="kl">Outstanding (AR)</div><div class="kv text-warning">'+fmt(outAR)+'</div><div class="ks">Across all customers</div></div>'+
+    '<div class="kb r"><div class="kl">Overdue (8+ Days)</div><div class="kv mr">'+fmt(overdue8)+'</div><div class="ks">Needs follow-up</div></div></div>'+
+    '<div class="pnl" style="margin:0.75rem;padding:1rem 1.25rem">'+
+    '<div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Accounts Receivable Aging</span><a class="text-[11px] font-semibold text-primary cursor-pointer hover:underline" onclick="go(\'r_outstanding\')">Full Report \u2192</a></div>'+
+    '<div class="grid grid-cols-5 gap-2.5">'+
+      agTile('Current (0-7d)',agC,cntC,'#3b82f6','text-blue-600')+
+      agTile('8-30 Days',ag8,cnt8,'#22c55e','text-green-600')+
+      agTile('31-60 Days',ag31,cnt31,'#eab308','text-yellow-600')+
+      agTile('61-90 Days',ag61,cnt61,'#f97316','text-orange-600')+
+      agTile('90+ Days',ag90p,cnt90p,'#ef4444','text-red-600')+
+    '</div></div>'+
+    '<div class="pnl" style="margin:0.75rem;padding:1rem 1.25rem">'+
+    '<div class="flex items-center justify-between mb-2.5"><span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Recent Activity</span><a class="text-[11px] font-semibold text-primary cursor-pointer hover:underline" onclick="go(\'r_transactions\')">Customer Ledger \u2192</a></div>'+
+    actH+'</div>'+
+    '<div class="grid grid-cols-4 gap-3 px-3 pb-3">'+qaH+'</div>');
 }
 
 // ============ DASHBOARD ============
@@ -669,14 +805,14 @@ function pgCusts(){
   custSel=[];
   var cats={};DB.customers.forEach(function(c){if(c.category)cats[c.category]=true;});
   var catList=Object.keys(cats).sort();
-  set('<div class="ph"><div class="pt">Customers</div><div class="ps">'+DB.customers.length+' records</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="go(\'cust_new\')">Add Customer</button></div></div>'+
+  set('<div class="ph"><div class="pt">Customers</div><div class="ps">'+DB.customers.length+' records</div><div class="ptb"><button class="btn btn-primary" onclick="go(\'cust_new\')">Add Customer</button></div></div>'+
   '<div class="pnl" style="margin:12px">'+
   '<div class="actb">'+
     '<span class="lbl" id="cselcnt">0 selected</span><div class="sep"></div>'+
-    (hasPermission('delete_customers')?'<div class="ddw"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="toggleDD(\'cbulkact\')">Actions ▾</button><div class="ddm" id="cbulkact"><a onclick="bulkCustDel()">Delete Selected</a><a onclick="bulkCustActive(true)">Mark Active</a><a onclick="bulkCustActive(false)">Mark Inactive</a></div></div>':'')+
-    (hasPermission('delete_customers')?'<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="cbdel" disabled onclick="bulkCustDel()">Delete</button>':'')+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" id="cbact" disabled onclick="bulkCustActive(true)">Mark Active</button>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" id="cbinact" disabled onclick="bulkCustActive(false)">Mark Inactive</button>'+
+    (hasPermission('delete_customers')?'<div class="ddw"><button class="btn btn-secondary btn-sm" onclick="toggleDD(\'cbulkact\')">Actions ▾</button><div class="ddm" id="cbulkact"><a onclick="bulkCustDel()">Delete Selected</a><a onclick="bulkCustActive(true)">Mark Active</a><a onclick="bulkCustActive(false)">Mark Inactive</a></div></div>':'')+
+    (hasPermission('delete_customers')?'<button class="btn btn-destructive btn-sm" id="cbdel" disabled onclick="bulkCustDel()">Delete</button>':'')+
+    '<button class="btn btn-secondary btn-sm" id="cbact" disabled onclick="bulkCustActive(true)">Mark Active</button>'+
+    '<button class="btn btn-secondary btn-sm" id="cbinact" disabled onclick="bulkCustActive(false)">Mark Inactive</button>'+
     '<div class="sep"></div>'+
     '<input class="fi" placeholder="Search..." oninput="fCust(this.value)" style="max-width:200px"/>'+
     '<select class="fi" style="max-width:150px" onchange="fCustCat(this.value)"><option value="">All Categories</option>'+catList.map(function(c){return'<option value="'+c+'">'+c+'</option>';}).join('')+'</select>'+
@@ -707,7 +843,6 @@ function pgCusts(){
         '<a onclick="pgCustF('+c.id+')">Edit</a>'+
         '<a onclick="delCust('+c.id+')">Delete</a>'+
         '<div class="sep"></div>'+
-        '<a onclick="alert(\'Add Invoice for '+esc(c.name)+' — coming soon\')">Add Invoice</a>'+
         '<a onclick="go(\'invoice_new\')">Add Invoice</a>'+
         '<a onclick="alert(\'Add Sales Order for '+esc(c.name)+' — coming soon\')">Add Sales Order</a>'+
         '<a onclick="go(\'receipt_new\')">Add Receipt</a>'+
@@ -888,7 +1023,7 @@ function quickViewC(id){
       '<div><div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Payments</div><div class="text-base font-bold text-success">'+fmt(totalR)+'</div></div>'+
     '</div>'+
   '</div>';
-  modal('Customer Preview',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="closeM();pgCustF('+id+')">Edit Customer</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Customer Preview',html,'<button class="btn btn-primary" onclick="closeM();pgCustF('+id+')">Edit Customer</button><button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function viewStatement(id){
   var c=DB.customers.find(function(x){return x.id===id;});if(!c)return;
@@ -912,11 +1047,11 @@ function viewStatement(id){
     (rows.length?rows.map(function(r){return'<tr><td>'+fd(r.date)+'</td><td>'+r.desc+'</td><td class="money'+(r.dr?' mr':'')+'">'+(r.dr?fmt(r.dr):'\u2014')+'</td><td class="money'+(r.cr?' mg':'')+'">'+(r.cr?fmt(r.cr):'\u2014')+'</td><td class="money font-bold">'+fmt(r.bal)+'</td></tr>';}).join(''):'<tr><td colspan="5" class="empty">No transactions</td></tr>')+
     '</tbody></table>'+
   '</div>';
-  modal('Account Statement',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Account Statement',html,'<button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function pgCustF(eid){
   var c=eid?DB.customers.find(function(x){return x.id===eid;}):{id:null,name:'',phone:'',mobile:'',email:'',a1:'',a2:'',a3:'',post:'',vat:'',credit:0,bal:0,rep:'',category:'',telephone:'',active:true};
-  set('<div class="ph"><div class="pt">'+(eid?'Edit Customer':'New Customer')+'</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveC('+(eid||'null')+')">Save</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="go(\'customers\')">Cancel</button></div></div>'+
+  set('<div class="ph"><div class="pt">'+(eid?'Edit Customer':'New Customer')+'</div><div class="ptb"><button class="btn btn-primary" onclick="saveC('+(eid||'null')+')">Save</button><button class="btn btn-secondary" onclick="go(\'customers\')">Cancel</button></div></div>'+
   '<div class="p-3 grid grid-cols-2 gap-3.5">'+
     '<div><div class="text-[11px] font-bold text-slate-400 border-b-2 border-primary pb-0.5 mb-2.5">Customer Info</div>'+
     '<table class="ft"><tr><td class="lb">Name</td><td><input class="fi" id="cn" value="'+esc(c.name)+'"/></td></tr>'+
@@ -935,7 +1070,7 @@ function pgCustF(eid){
     '<input class="fi mb-1" id="ca2" value="'+(c.a2||'')+'" placeholder="Area"/>'+
     '<input class="fi mb-1" id="ca3" value="'+esc(c.a3)+'" placeholder="City/State"/>'+
     '<input class="fi" id="cpo" value="'+(c.post||'')+'" placeholder="Postal Code"/></div></div>'+
-  '<div class="px-3 pb-3 flex gap-1.5"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveC('+(eid||'null')+')">Save</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="go(\'customers\')">Cancel</button>'+(eid&&hasPermission('delete_customers')?'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-9 px-4" onclick="delCust('+eid+')">Delete Customer</button>':'')+'</div>');
+  '<div class="px-3 pb-3 flex gap-1.5"><button class="btn btn-primary" onclick="saveC('+(eid||'null')+')">Save</button><button class="btn btn-secondary" onclick="go(\'customers\')">Cancel</button>'+(eid&&hasPermission('delete_customers')?'<button class="btn btn-destructive" onclick="delCust('+eid+')">Delete Customer</button>':'')+'</div>');
 }
 function saveC(eid){
   var g=function(id){return(document.getElementById(id)||{}).value||'';};
@@ -958,11 +1093,11 @@ var invSel=[];
 function pgInvoices(){
   invSel=[];
   var qs=DB.quotes.slice().sort(function(a,b){return b.id-a.id;}).map(function(q){var cu=DB.customers.find(function(c){return c.id===q.cid;});var t=qT(q.id);var ic=DB.items.filter(function(i){return i.qid===q.id;}).length;return{q:q,cu:cu,t:t,ic:ic};});
-  set('<div class="ph"><div class="pt">Invoices</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="go(\'invoice_new\')">Process Invoice</button></div></div>'+
+  set('<div class="ph"><div class="pt">Invoices</div><div class="ptb"><button class="btn btn-primary" onclick="go(\'invoice_new\')">Process Invoice</button></div></div>'+
   '<div class="pnl"><div class="pnlh">All Invoices <span class="font-normal text-slate-400 text-xs">'+DB.quotes.length+' documents</span></div>'+
   '<div class="actb">'+
     '<span class="lbl" id="iselcnt">0 selected</span><div class="sep"></div>'+
-    (hasPermission('delete_invoices')?'<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="ibdel" disabled onclick="bulkInvDel()">Delete</button>':'')+
+    (hasPermission('delete_invoices')?'<button class="btn btn-destructive btn-sm" id="ibdel" disabled onclick="bulkInvDel()">Delete</button>':'')+
     '<div class="sep"></div>'+
     '<input class="fi" placeholder="Search by customer name..." oninput="fQt(this.value)" id="qsrch" style="max-width:240px"/>'+
     '<span class="vlbl">View:</span><div class="vddw"><a class="text-primary cursor-pointer text-xs no-underline" onclick="event.stopPropagation();vddToggle()" id="qvtrig">All (No Filter) ▾</a><div class="vddm" id="qvddm">'+
@@ -1113,7 +1248,7 @@ function quickViewQ(qid){
       '<div>Account Number: '+(DB.company.bankAccount||'—')+'</div>'+
     '</div>'+
   '</div>';
-  modal('Invoice Preview',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="closeM();pgQF('+qid+')">Edit</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="printQ('+qid+')">Print</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Invoice Preview',html,'<button class="btn btn-primary" onclick="closeM();pgQF('+qid+')">Edit</button><button class="btn btn-secondary" onclick="printQ('+qid+')">Print</button><button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function pgQF(eid){
   eQID=eid;
@@ -1136,7 +1271,7 @@ function bQF(q){
   var today=localDate();
   var exp5=new Date();exp5.setDate(exp5.getDate()+7);var expd=exp5.toISOString().split('T')[0];
   var isE=!!q;
-  set('<div class="ph"><div class="pt">'+(isE?'Edit Invoice':'New Invoice')+'</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveQ('+(isE?q.id:'null')+',false)">Save</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-success text-white hover:bg-success/90 dark:bg-success dark:text-white dark:hover:bg-success/80 border-success h-9 px-4" onclick="saveQ('+(isE?q.id:'null')+',true)">Save & New</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="if(LI.length)printQPreview('+(isE?q.id:'').toString()+')">Print</button></div></div>'+
+  set('<div class="ph"><div class="pt">'+(isE?'Edit Invoice':'New Invoice')+'</div><div class="ptb"><button class="btn btn-primary" onclick="saveQ('+(isE?q.id:'null')+',false)">Save</button><button class="btn btn-success" onclick="saveQ('+(isE?q.id:'null')+',true)">Save & New</button><button class="btn btn-secondary" onclick="if(LI.length)printQPreview('+(isE?q.id:'').toString()+')">Print</button></div></div>'+
   '<div class="p-3"><div class="grid grid-cols-3 gap-3 mb-3">'+
     '<div class="pnl m-0 overflow-visible"><div class="pnlh">Customer Details</div><div class="p-2.5">'+
     '<table class="ft overflow-visible"><tr><td class="lb align-top">Customer</td><td class="relative overflow-visible"><div class="srch relative"><input class="fi" id="qcs" placeholder="Search customer..." style="padding-right:24px"/><span class="absolute right-1.5 top-1.5 cursor-pointer text-primary text-sm z-[51]" title="Add new customer" onclick="addCInline()">+</span><div class="qcddm" id="qcdd"></div></div><select id="qc" style="display:none">'+
@@ -1180,10 +1315,10 @@ function bQF(q){
   '<div class="mt-3 pt-3 border-t border-border flex items-center gap-2">'+
     '<span class="text-xs text-slate-400">Status: <strong>'+(isE?q.stat:'New Invoice')+'</strong></span>'+
     '<div class="ml-auto flex gap-1.5">'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveQ('+(isE?q.id:'null')+',false)">Save</button>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-success text-white hover:bg-success/90 dark:bg-success dark:text-white dark:hover:bg-success/80 border-success h-9 px-4" onclick="saveQ('+(isE?q.id:'null')+',true)">Save & New</button>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="printQ('+(isE?q.id:'null').toString()+')">Print</button>'+
-      (isE?'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="emailQ('+q.id+')">Email</button>':'')+
+      '<button class="btn btn-primary" onclick="saveQ('+(isE?q.id:'null')+',false)">Save</button>'+
+      '<button class="btn btn-success" onclick="saveQ('+(isE?q.id:'null')+',true)">Save & New</button>'+
+      '<button class="btn btn-secondary" onclick="printQ('+(isE?q.id:'null').toString()+')">Print</button>'+
+      (isE?'<button class="btn btn-secondary" onclick="emailQ('+q.id+')">Email</button>':'')+
     '</div></div>');
   rLI();
   if(q){onQC(q.cid);document.getElementById('qrep').value=q.rep||'';if(q.del)document.getElementById('qcdel').value=q.del;if(q.delFee)document.getElementById('qdelFee').value=q.delFee;if(q.designFee)document.getElementById('qdesignFee').value=q.designFee;}
@@ -1373,11 +1508,11 @@ var rvKey='all';
 var rcptSel=[];
 function pgRcpts(){
   rcptSel=[];
-  set('<div class="ph"><div class="pt">Receipts</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="go(\'receipt_new\')">New Receipt</button></div></div>'+
+  set('<div class="ph"><div class="pt">Receipts</div><div class="ptb"><button class="btn btn-primary" onclick="go(\'receipt_new\')">New Receipt</button></div></div>'+
   '<div class="pnl"><div class="pnlh">All Receipts <span class="font-normal text-slate-400 text-xs">'+DB.receipts.length+' records</span></div>'+
   '<div class="actb">'+
     '<span class="lbl" id="rselcnt">0 selected</span><div class="sep"></div>'+
-    (hasPermission('delete_receipts')?'<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="rbdel" disabled onclick="bulkRcptDel()">Delete</button>':'')+
+    (hasPermission('delete_receipts')?'<button class="btn btn-destructive btn-sm" id="rbdel" disabled onclick="bulkRcptDel()">Delete</button>':'')+
     '<div class="sep"></div>'+
     '<input class="fi" placeholder="Search by customer name..." oninput="fRcpt(this.value)" id="rsrch" style="max-width:240px"/>'+
     '<span class="vlbl">View:</span><div class="vddw"><a class="text-primary cursor-pointer text-xs no-underline" onclick="event.stopPropagation();rvddToggle()" id="rvtrig">All (No Filter) ▾</a><div class="vddm" id="rvddm">'+
@@ -1508,11 +1643,11 @@ function pgRF(eid){
   var today=localDate();
   rAllocData=[];
   set('<div class="ph"><div class="pt">Process Receipt</div><div class="ptb">'+
-  '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" id="rbtn_save" onclick="saveR(\'save\')">Process</button>'+
-  '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-success text-white hover:bg-success/90 dark:bg-success dark:text-white dark:hover:bg-success/80 border-success h-9 px-4" id="rbtn_new" onclick="saveR(\'new\')">Process &amp; New</button>'+
-  '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" id="rbtn_print" onclick="saveR(\'print\')">Process &amp; Print</button>'+
-  '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" id="rbtn_email" onclick="saveR(\'email\')">Process &amp; Email</button>'+
-  '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="go(\'receipts\')">Cancel</button></div></div>'+
+  '<button class="btn btn-primary" id="rbtn_save" onclick="saveR(\'save\')">Process</button>'+
+  '<button class="btn btn-success" id="rbtn_new" onclick="saveR(\'new\')">Process &amp; New</button>'+
+  '<button class="btn btn-secondary" id="rbtn_print" onclick="saveR(\'print\')">Process &amp; Print</button>'+
+  '<button class="btn btn-secondary" id="rbtn_email" onclick="saveR(\'email\')">Process &amp; Email</button>'+
+  '<button class="btn btn-secondary" onclick="go(\'receipts\')">Cancel</button></div></div>'+
   '<div class="p-3">'+
   '<div id="ralloc_err" class="hidden bg-red-100 border border-red-300 text-red-800 p-2.5 rounded-lg text-xs mb-2.5"></div>'+
   '<div class="grid grid-cols-2 gap-3.5 mb-3.5">'+
@@ -1637,7 +1772,7 @@ function rOnC(cid){
     // Multiple invoices: show allocation inputs
     document.getElementById('ramt').value='';
     document.getElementById('ramt').dataset.auto='';
-    tbody.innerHTML=rows.length?'<tr class="bg-blue-50"><td colspan="2" class="text-xs font-semibold text-primary">Enter receipt amount, then click Auto-Match or Full per invoice</td><td colspan="3" class="text-right"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-8 px-3" onclick="rAutoMatchOldest()">Auto-Match Oldest</button></td></tr>'+rows.map(function(o,i){
+    tbody.innerHTML=rows.length?'<tr class="bg-blue-50"><td colspan="2" class="text-xs font-semibold text-primary">Enter receipt amount, then click Auto-Match or Full per invoice</td><td colspan="3" class="text-right"><button class="btn btn-primary btn-sm" onclick="rAutoMatchOldest()">Auto-Match Oldest</button></td></tr>'+rows.map(function(o,i){
       var q=o.q;var t=o.t;
       return'<tr id="rrow_'+i+'" class="transition-all duration-150">'+
         '<td class="whitespace-nowrap"><input type="number" class="qi" id="ralloc_'+i+'" min="0" max="'+t.bal+'" step="100" value="0" style="width:80px;text-align:right;font-weight:600" oninput="rOnAllocInput('+i+')"/><button class="inline-flex items-center gap-1 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-6 px-2 ml-0.5 text-[10px]" onclick="rFullAlloc('+i+')">Full</button></td>'+
@@ -1873,8 +2008,8 @@ function pgNewProd(){
   var nextId=DB.ids.p+1;
   var parentId='PRD-'+String(nextId).padStart(4,'0');
   set('<div class="ph"><div class="pt">New Production Job</div><div class="ptb">'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveNewProd()">Create Job</button>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="go(\'production\')">Cancel</button>'+
+    '<button class="btn btn-primary" onclick="saveNewProd()">Create Job</button>'+
+    '<button class="btn btn-secondary" onclick="go(\'production\')">Cancel</button>'+
   '</div></div>'+
   '<div class="p-3">'+
   '<div class="grid grid-cols-2 gap-3.5 mb-3.5">'+
@@ -2054,14 +2189,14 @@ function pgAllJobs(){
         '<option value="due_month"' +(_allJobsFilter==='due_month'?' selected':'')+'>Due This Month</option>'+
       '</select>'+
       '<div class="sep"></div>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printProdJobs(getFilteredAllJobs(),\'All Jobs\')">Print</button>'+
+      '<button class="btn btn-primary btn-sm" onclick="printProdJobs(getFilteredAllJobs(),\'All Jobs\')">Print</button>'+
       '<div class="sep"></div>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="exportTableCSV(\'atbl\',\'all_jobs.csv\')">Export CSV</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="exportTableCSV(\'atbl\',\'all_jobs.csv\')">Export CSV</button>'+
     '</div></div>'+
   '<div class="pnl m-3">'+
   '<div class="actb">'+
     '<span class="lbl" id="aselcnt">0 selected</span><div class="sep"></div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="abdel" disabled onclick="bulkAllDel()">Delete</button>'+
+    '<button class="btn btn-destructive btn-sm" id="abdel" disabled onclick="bulkAllDel()">Delete</button>'+
   '</div>'+
   '<div class="overflow-x-auto">'+
   '<table class="dt text-xs" id="atbl"><thead><tr>'+
@@ -2094,7 +2229,7 @@ function pgAllJobs(){
       '<td>'+(logDate?fd(logDate):'\u2014')+'</td>'+
       '<td>'+(dueDate?fd(dueDate):'\u2014')+'</td>'+
       '<td><span class="sp '+statusCls+'">'+statusText+'</span></td>'+
-      '<td><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-8 px-3" onclick="quickViewJob('+p.id+')">Preview</button></td>'+
+      '<td><button class="btn btn-primary btn-sm" onclick="quickViewJob('+p.id+')">Preview</button></td>'+
     '</tr>';
   }).join(''):'<tr><td colspan="10" class="empty">'+(DB.productions.length?'No jobs match the current filter':'No jobs yet. Create one from Production &rarr; New Job.')+'</td></tr>')+
   '</tbody></table></div></div>');
@@ -2146,7 +2281,7 @@ function pgProd(){
   '<div class="pnl m-3">'+
   '<div class="actb">'+
     '<span class="lbl" id="pselcnt">0 selected</span><div class="sep"></div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="pbdel" disabled onclick="bulkProdDel()">Delete</button>'+
+    '<button class="btn btn-destructive btn-sm" id="pbdel" disabled onclick="bulkProdDel()">Delete</button>'+
   '</div>'+
   '<div class="overflow-x-auto">'+
   '<table class="dt" style="font-size:11px" id="ptbl"><thead><tr>'+
@@ -2529,12 +2664,12 @@ function pgProdLog(){
         '<option value="month"' +(_cplFilter==='month'?' selected':'')+'>This Month</option>'+
       '</select>'+
       '<div class="sep"></div>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printProdJobs(getFilteredCplJobs(),\'Completed Jobs\')">Print</button>'+
+      '<button class="btn btn-primary btn-sm" onclick="printProdJobs(getFilteredCplJobs(),\'Completed Jobs\')">Print</button>'+
     '</div></div>'+
   '<div class="pnl">'+
   '<div class="actb">'+
     '<span class="lbl" id="cselcnt">0 selected</span><div class="sep"></div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="cbdel" disabled onclick="bulkCplDel()">Delete</button>'+
+    '<button class="btn btn-destructive btn-sm" id="cbdel" disabled onclick="bulkCplDel()">Delete</button>'+
   '</div>'+
   (filtered.length?'<table class="dt" id="cpltbl"><thead><tr>'+
     '<th style="width:32px"><input type="checkbox" class="cb" onchange="cplSelAll(this.checked)"/></th>'+
@@ -2629,7 +2764,7 @@ function quickViewCplJob(pid){
     stgRows+'</tbody></table>'+
     '<div class="text-xs"><span class="text-slate-400">Total Commission:</span> <strong>'+fmt(p.stages.reduce(function(a,s){return a+(s.comm||0);},0))+'</strong></div>'+
   '</div>';
-  modal('Completed Job Preview',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="closeM();editCplJob('+pid+')">Edit Artisans</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Completed Job Preview',html,'<button class="btn btn-primary" onclick="closeM();editCplJob('+pid+')">Edit Artisans</button><button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function editCplJob(pid){
   var p=DB.productions.find(function(x){return x.id===pid;});if(!p)return;
@@ -2657,7 +2792,7 @@ function editCplJob(pid){
     '<div class="text-xs text-slate-400 mb-2">Check/uncheck artisans. Commission splits equally among checked names.</div>'+
     '<table class="dt text-xs mb-3"><thead><tr><th>Stage</th><th>Artisans</th><th>Commission</th><th>Date</th></tr></thead><tbody>'+
     stgRows+'</tbody></table>'+
-    '<div class="text-right"><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveCplArtisans('+pid+')">Save Changes</button> <button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Cancel</button></div>'+
+    '<div class="text-right"><button class="btn btn-primary" onclick="saveCplArtisans('+pid+')">Save Changes</button> <button class="btn btn-secondary" onclick="closeM()">Cancel</button></div>'+
   '</div>';
   modal('Edit Completed Job',html,'');
 }
@@ -2720,7 +2855,7 @@ function pgDates(){
   '<div class="pnl m-3">'+
   '<div class="actb">'+
     '<span class="lbl" id="dselcnt">0 selected</span><div class="sep"></div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-8 px-3" id="dbdel" disabled onclick="bulkDtDel()">Delete</button>'+
+    '<button class="btn btn-destructive btn-sm" id="dbdel" disabled onclick="bulkDtDel()">Delete</button>'+
   '</div>'+
   '<div class="overflow-x-auto">'+
   '<table class="dt" style="font-size:11px" id="dttbl"><thead><tr>'+
@@ -2832,13 +2967,13 @@ function pgPay(){
   // Main content (no sidebar)
   set('<div class="ph"><div class="pt">Weekly Payroll</div>'+
     '<div class="ptb">'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="payWkNav(-1)">&larr; Prev</button>'+
+      '<button class="btn btn-secondary" onclick="payWkNav(-1)">&larr; Prev</button>'+
       '<span class="mx-3 text-sm font-semibold text-primary">'+formatWeekLabel(payWeek)+(isCurrent?' (This Week)':'')+'</span>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="payWkNav(1)">Next &rarr;</button>'+
-      (isCurrent?'':'<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3 ml-2" onclick="payWeek=null;pgPay()">Today</button>')+
+      '<button class="btn btn-secondary" onclick="payWkNav(1)">Next &rarr;</button>'+
+      (isCurrent?'':'<button class="btn btn-secondary btn-sm ml-2" onclick="payWeek=null;pgPay()">Today</button>')+
       '<button class="btn bsm '+(isPaid?'bg':'bp')+' ml-3" onclick="toggleWeekPaid(\''+payWeek+'\')">'+(isPaid?'Paid':'Mark Paid')+'</button>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3 ml-2" onclick="exportPayrollCSV()">Export CSV</button>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-8 px-3 ml-2" onclick="printPayrollWeek(\''+payWeek+'\')">Print Week</button>'+
+      '<button class="btn btn-secondary btn-sm ml-2" onclick="exportPayrollCSV()">Export CSV</button>'+
+      '<button class="btn btn-primary btn-sm ml-2" onclick="printPayrollWeek(\''+payWeek+'\')">Print Week</button>'+
     '</div></div>'+
   '<div class="pnl p-3">'+
   (isPaid?'<div class="mb-2.5 px-3 py-2 bg-green-50 border border-green-300 rounded-lg text-xs text-green-600 font-semibold">This week has been marked as Paid. Any stages logged to this week now will go to Outstanding.</div>':'')+
@@ -2869,7 +3004,7 @@ function pgPay(){
       '<div class="text-sm font-bold text-destructive">Outstanding Commissions</div>'+
       '<div class="flex items-center gap-3">'+
         '<span class="text-xs font-bold money">'+fmt(outstandingTotal)+'</span>'+
-        (outstandingItems.length?'<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-success text-white hover:bg-success/90 dark:bg-success dark:text-white dark:hover:bg-success/80 border-success h-8 px-3" onclick="payAllOutstanding()">Pay All Outstanding</button>':'')+
+        (outstandingItems.length?'<button class="btn btn-success btn-sm" onclick="payAllOutstanding()">Pay All Outstanding</button>':'')+
       '</div>'+
     '</div>'+
     (outstandingItems.length?
@@ -2884,7 +3019,7 @@ function pgPay(){
           '<td>'+SL[o.stage]+'</td>'+
           '<td class="money mg">'+fmt(o.amount)+'</td>'+
           '<td>'+formatWeekLabel(o.weekLogged)+'</td>'+
-          '<td><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-success text-white hover:bg-success/90 dark:bg-success dark:text-white dark:hover:bg-success/80 border-success h-8 px-3" onclick="payOutstandingItem('+o.id+')">Paid</button></td>'+
+          '<td><button class="btn btn-success btn-sm" onclick="payOutstandingItem('+o.id+')">Paid</button></td>'+
         '</tr>';
       }).join('')+
       '</tbody></table>':
@@ -3111,7 +3246,7 @@ function pgPerformance(){
     var d=new Date();d.setMonth(d.getMonth()-i);
     months.push(d.toISOString().substring(0,7));
   }
-  set('<div class="ph"><div class="pt">Artisan Performance</div><div class="ps">Commission & productivity metrics</div><div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="exportTableCSV(\'perftbl\',\'performance.csv\')">Export CSV</button></div></div>'+
+  set('<div class="ph"><div class="pt">Artisan Performance</div><div class="ps">Commission & productivity metrics</div><div class="ptb"><button class="btn btn-secondary btn-sm" onclick="exportTableCSV(\'perftbl\',\'performance.csv\')">Export CSV</button></div></div>'+
   '<div class="pnl m-3">'+
   // Top performers card
   '<div class="grid gap-3 mb-4" style="grid-template-columns:repeat('+Math.min(3,allNames.length)+',1fr)">'+
@@ -3184,7 +3319,7 @@ function pgDaysOutstanding(){
   rows.sort(function(a,b){return b.days-a.days;});
   var totalOwed=rows.reduce(function(s,r){return s+r.bal;},0);
   set('<div class="ph"><div class="pt">Customer Balances - Days Outstanding</div><div class="ps">'+rows.length+' unpaid invoices &mdash; '+fmt(totalOwed)+' total outstanding</div>'+
-    '<div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printDaysOutstanding()">Print</button></div></div>'+
+    '<div class="ptb"><button class="btn btn-primary btn-sm" onclick="printDaysOutstanding()">Print</button></div></div>'+
   '<div class="pnl m-3"><div class="overflow-x-auto">'+
   '<table class="dt text-xs"><thead><tr>'+
     '<th>Invoice</th><th>Customer</th><th>Date Issued</th><th>Days</th><th>Invoice Total</th><th>Amount Due</th><th>Status</th>'+
@@ -3227,7 +3362,7 @@ function pgSalesByCust(){
   var grandTotal=rows.reduce(function(s,r){return s+r.total;},0);
   var grandPaid=rows.reduce(function(s,r){return s+r.paid;},0);
   set('<div class="ph"><div class="pt">Sales by Customer</div><div class="ps">'+rows.length+' customers &mdash; '+fmt(grandTotal)+' total sales</div>'+
-    '<div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printSalesByCust()">Print</button></div></div>'+
+    '<div class="ptb"><button class="btn btn-primary btn-sm" onclick="printSalesByCust()">Print</button></div></div>'+
   '<div class="pnl m-3"><div class="overflow-x-auto">'+
   '<table class="dt text-xs"><thead><tr>'+
     '<th>Customer</th><th>Invoices</th><th>Total Sales</th><th>Amount Paid</th><th>Balance Outstanding</th>'+
@@ -3391,7 +3526,7 @@ function printCustTrans(){
 
 function pgCustTrans(){
   set('<div class="ph"><div class="pt">Customer Transactions</div>'+
-    '<div class="ptb"><button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printCustTrans()">Print</button></div></div>'+
+    '<div class="ptb"><button class="btn btn-primary btn-sm" onclick="printCustTrans()">Print</button></div></div>'+
   '<div class="p-3">'+
   '<div class="mb-3"><label class="text-xs font-semibold mr-1.5">Select Customer:</label>'+
   '<select class="fi max-w-[250px]" id="ctrans_cust" onchange="renderCustTrans()">'+
@@ -3490,9 +3625,9 @@ function pgSalesReport(){
 
   set('<div class="ph"><div class="pt">Monthly Sales Report</div>'+
     '<div class="ptb">'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="srNav(-1)">&larr; Prev Month</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="srNav(-1)">&larr; Prev Month</button>'+
       '<span class="mx-2 text-sm font-bold text-primary">'+monthLabel+'</span>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="srNav(1)">Next Month &rarr;</button>'+
+      '<button class="btn btn-secondary btn-sm" onclick="srNav(1)">Next Month &rarr;</button>'+
       '<div class="sep"></div>'+
       '<select class="fi text-xs h-8 px-2" onchange="_srFilter=this.value;pgSalesReport()" style="width:auto">'+
         '<option value="all"' +(_srFilter==='all'?' selected':'')+'>All Invoices</option>'+
@@ -3501,8 +3636,8 @@ function pgSalesReport(){
         '<option value="full"' +(_srFilter==='full'?' selected':'')+'>Full Payment</option>'+
       '</select>'+
       '<div class="sep"></div>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-8 px-3" onclick="printSalesReport(\''+ym+'\')">Print</button>'+
-      '<button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 cursor-pointer border font-sans bg-success text-white hover:bg-success/90 border-success h-8 px-3" onclick="exportSalesReport(\''+ym+'\')">Export Excel</button>'+
+      '<button class="btn btn-primary btn-sm" onclick="printSalesReport(\''+ym+'\')">Print</button>'+
+      '<button class="btn btn-success btn-sm" onclick="exportSalesReport(\''+ym+'\')">Export Excel</button>'+
     '</div></div>'+
   '<div class="p-3 grid grid-cols-4 gap-4">'+
     '<div class="pnl m-0 p-4 text-center"><div class="text-xs text-slate-500 font-semibold uppercase tracking-wide">Total Sales</div><div class="text-2xl font-extrabold text-primary mt-1">'+fmt(totalSales)+'</div></div>'+
@@ -3662,7 +3797,7 @@ function pgSettings(){
       '<input type="file" id="setLogo" accept="image/*" onchange="previewLogo(this)" class="text-xs"/>'+
       (c.logo?'<div class="mt-1"><img src="'+c.logo+'" class="max-h-10 border border-[#ddd] rounded p-0.5"/><button class="inline-flex items-center gap-1 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-6 px-2 ml-1.5" onclick="removeLogo()">Remove</button></div>':'')+
     '</div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveCompany()">Save Company Info</button>'+
+    '<button class="btn btn-primary" onclick="saveCompany()">Save Company Info</button>'+
     '</div></div>'+
     // Bank Details & Terms
     '<div class="pnl m-0"><div class="pnlh">Bank Details & Terms</div><div class="p-3">'+
@@ -3670,7 +3805,7 @@ function pgSettings(){
     '<div class="mb-2"><label class="text-xs font-semibold block mb-0.5">Account Number</label><input class="fi w-full" id="setAcct" value="'+esc(c.bankAccount)+'"/></div>'+
     '<div class="mb-2"><label class="text-xs font-semibold block mb-0.5">Account Name</label><input class="fi w-full" id="setAcctName" value="'+esc(c.bankAccountName)+'"/></div>'+
     '<div class="mb-3"><label class="text-xs font-semibold block mb-0.5">Default Terms/Conditions</label><textarea class="fi w-full resize-y h-[80px]" id="setTerms">'+esc(c.terms)+'</textarea></div>'+
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveBankTerms()">Save Bank & Terms</button>'+
+    '<button class="btn btn-primary" onclick="saveBankTerms()">Save Bank & Terms</button>'+
     '</div></div>'+
     // Sales Reps
     '<div class="pnl m-0"><div class="pnlh">Sales Reps</div><div class="p-3">'+
@@ -3685,7 +3820,7 @@ function pgSettings(){
     ARTISANS.map(function(a,i){return'<tr><td>'+(i+1)+'</td><td>'+esc(a)+'</td><td><button class="inline-flex items-center gap-1 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-6 px-2" onclick="rmArt('+i+')">\u2715</button></td></tr>';}).join('')+
     '</tbody></table></div></div>'+
     // Commission Matrix
-    '<div class="pnl m-0"><div class="pnlh">Commission Matrix <button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-8 px-3" onclick="editMx()">Edit</button></div><div class="p-3">'+
+    '<div class="pnl m-0"><div class="pnlh">Commission Matrix <button class="btn btn-secondary btn-sm" onclick="editMx()">Edit</button></div><div class="p-3">'+
     '<table class="dt"><thead><tr><th>Stage</th><th>Small</th><th>Medium</th><th>Large</th></tr></thead><tbody>'+
     STAGES.map(function(s){return'<tr><td>'+s.label+'</td>'+['Small','Medium','Large'].map(function(t){return'<td class="money mg">'+fmt(CM[t][s.key])+'</td>';}).join('')+'</tr>';}).join('')+
     '</tbody></table></div></div>'+
@@ -3694,7 +3829,7 @@ function pgSettings(){
     Object.keys(FT_STAGES).map(function(ft){return'<tr><td class="font-semibold">'+ft+'</td><td class="text-slate-400 text-xs">'+FT_STAGES[ft].map(function(s){return SL[s]||s;}).join(' \u2192 ')+'</td></tr>';}).join('')+
     '</tbody></table></div></div>'+
     // User Management
-    '<div class="pnl m-0 col-span-full"><div class="pnlh">User Management <button class="inline-flex items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-8 px-3" onclick="addUserModal()">+ Add User</button></div><div class="p-3">'+
+    '<div class="pnl m-0 col-span-full"><div class="pnlh">User Management <button class="btn btn-primary btn-sm" onclick="addUserModal()">+ Add User</button></div><div class="p-3">'+
     '<table class="dt"><thead><tr><th>#</th><th>Name</th><th>Email</th><th>Role</th><th></th></tr></thead><tbody>'+
     DB.users.map(function(u,i){
       return'<tr><td>'+(i+1)+'</td><td>'+esc(u.name)+'</td><td>'+esc(u.username)+'</td><td><span class="text-white px-2 py-0.5 rounded text-[10px]" style="background:'+(u.role==='admin'?'#dc2626':'#16a34a')+'">'+u.role.replace('_',' ')+'</span></td><td><button class="inline-flex items-center gap-1 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-6 px-2" onclick="editUserModal('+u.id+')">Edit</button> '+(u.id!==1?'<button class="inline-flex items-center gap-1 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive dark:text-white dark:hover:bg-destructive/80 border-destructive h-6 px-2" onclick="delUser('+u.id+')">Delete</button>':'')+'</td></tr>';
@@ -3742,7 +3877,7 @@ function addUserModal(){
     '<div><label style="font-size:11px;font-weight:600;display:block;margin-bottom:2px">Password</label><input class="fi" id="nuPass" type="password" style="width:100%"/></div>'+
     '<div><label style="font-size:11px;font-weight:600;display:block;margin-bottom:2px">Role</label><select class="fi" id="nuRole" style="width:100%" onchange="toggleRepLink()"><option value="admin">Admin</option><option value="sales">Sales</option></select></div>'+
     '</div>',
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveNewUser()">Save</button>');
+    '<button class="btn btn-secondary" onclick="closeM()">Cancel</button><button class="btn btn-primary" onclick="saveNewUser()">Save</button>');
 }
 function toggleRepLink(){}
 function saveNewUser(){
@@ -3775,7 +3910,7 @@ function editUserModal(uid){
     '<div><label style="font-size:11px;font-weight:600;display:block;margin-bottom:2px">New Password (leave blank to keep)</label><input class="fi" id="euPass" type="password" style="width:100%"/></div>'+
     '<div><label style="font-size:11px;font-weight:600;display:block;margin-bottom:2px">Role</label><select class="fi" id="euRole" style="width:100%"><option value="admin"'+(u.role==='admin'?' selected':'')+'>Admin</option><option value="sales"'+(u.role==='sales'||u.role==='sales_rep'?' selected':'')+'>Sales</option></select></div>'+
     '</div>',
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveEditUser('+uid+')">Save</button>');
+    '<button class="btn btn-secondary" onclick="closeM()">Cancel</button><button class="btn btn-primary" onclick="saveEditUser('+uid+')">Save</button>');
 }
 function toggleRepLinkEdit(){}
 function saveEditUser(uid){
@@ -3819,7 +3954,7 @@ function editMx(){
     '<table class="dt"><thead><tr><th>Stage</th><th>Small (\u20a6)</th><th>Medium (\u20a6)</th><th>Large (\u20a6)</th></tr></thead><tbody>'+
     STAGES.map(function(s){return'<tr><td>'+s.label+'</td>'+['Small','Medium','Large'].map(function(t){return'<td><input class="qi" type="number" id="cm_'+t+'_'+s.key+'" value="'+CM[t][s.key]+'" style="text-align:right"/></td>';}).join('')+'</tr>';}).join('')+
     '</tbody></table>',
-    '<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="saveMx()">Save</button>');
+    '<button class="btn btn-secondary" onclick="closeM()">Cancel</button><button class="btn btn-primary" onclick="saveMx()">Save</button>');
 }
 function saveMx(){
   STAGES.forEach(function(s){['Small','Medium','Large'].forEach(function(t){var e=document.getElementById('cm_'+t+'_'+s.key);if(e)CM[t][s.key]=+e.value||0;});});
@@ -4062,7 +4197,7 @@ function quickViewJob(pid){
     '</tbody></table>'+
     '<div class="text-xs"><span class="text-slate-400">Total Commission:</span> <strong>'+fmt(p.stages.reduce(function(a,s){return a+(s.comm||0);},0))+'</strong></div>'+
   '</div>';
-  modal('Production Job Preview',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 dark:bg-primary dark:text-white dark:hover:bg-primary/80 border-primary h-9 px-4" onclick="printJob('+pid+')">Print</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Production Job Preview',html,'<button class="btn btn-primary" onclick="printJob('+pid+')">Print</button><button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function printJob(pid){
   var p=DB.productions.find(function(x){return x.id===pid;});if(!p)return;
@@ -4176,7 +4311,7 @@ function quickViewR(rid){
     '</div>'+
     (q?'<div class="pt-2.5 border-t border-border text-xs"><span class="text-slate-400">Invoice Total:</span> <strong>'+fmt(qT(r.qid).grand)+'</strong></div>':'')+
   '</div>';
-  modal('Receipt Preview',html,'<button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="printR('+rid+')">Print</button><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans border-border dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-muted dark:hover:bg-slate-700 bg-white dark:bg-slate-800 h-9 px-4" onclick="closeM()">Close</button>');
+  modal('Receipt Preview',html,'<button class="btn btn-secondary" onclick="printR('+rid+')">Print</button><button class="btn btn-secondary" onclick="closeM()">Close</button>');
 }
 function emailR(rid){
   var r=DB.receipts.find(function(x){return x.id===rid;});if(!r)return;
@@ -4274,7 +4409,7 @@ function startInactivityTimer(){
     if(!el){
       el=document.createElement('div');el.id='inactiveModal';
       el.className='fixed inset-0 bg-black/50 flex items-center justify-center z-[99999]';
-      el.innerHTML='<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 w-[360px] text-center border border-border"><div class="text-3xl mb-3">⏰</div><div class="text-lg font-bold mb-2">Session Expiring</div><div class="text-sm text-slate-500 mb-4">You\'ve been inactive for nearly an hour. You\'ll be logged out in 60 seconds unless you dismiss this.</div><button class="inline-flex items-center gap-1.5 rounded-lg text-sm font-semibold transition-all duration-150 active:scale-95 whitespace-nowrap cursor-pointer border font-sans bg-primary text-white hover:bg-primary/90 border-primary h-9 px-5" onclick="resetInactivityTimer();document.getElementById(\'inactiveModal\').remove()">I\'m still here</button></div>';
+      el.innerHTML='<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 w-[360px] text-center border border-border"><div class="text-3xl mb-3">⏰</div><div class="text-lg font-bold mb-2">Session Expiring</div><div class="text-sm text-slate-500 mb-4">You\'ve been inactive for nearly an hour. You\'ll be logged out in 60 seconds unless you dismiss this.</div><button class="btn btn-primary" onclick="resetInactivityTimer();document.getElementById(\'inactiveModal\').remove()">I\'m still here</button></div>';
       document.body.appendChild(el);
     }
   }, 59*60*1000); // warn at 59 min
@@ -4522,7 +4657,7 @@ function initApp(){
   document.querySelectorAll('.ti').forEach(function(el){
     var pg=el.dataset.pg;
     var show=true;
-    if((pg==='r_outstanding'||pg==='r_sales'||pg==='r_transactions'||pg==='r_sales_report')&&!hasPermission('reports'))show=false;
+    if((pg==='accounting'||pg==='r_outstanding'||pg==='r_sales'||pg==='r_transactions'||pg==='r_sales_report')&&!hasPermission('reports'))show=false;
     if(pg==='production'&&!hasPermission('production'))show=false;
     if(pg==='payroll'&&!hasPermission('payroll'))show=false;
     if(pg==='settings'&&!hasPermission('settings'))show=false;
@@ -4538,7 +4673,7 @@ function initApp(){
 }
 function go(pg){
   // Check permission before navigating
-  if(pg==='r_outstanding'||pg==='r_sales'||pg==='r_transactions'||pg==='r_sales_report'){
+  if(pg==='accounting'||pg==='r_outstanding'||pg==='r_sales'||pg==='r_transactions'||pg==='r_sales_report'){
     if(!hasPermission('reports')){alert('Access denied');return;}
   }
   if(pg==='production'||pg==='prod_new'||pg==='prod_all'||pg==='prod_log'||pg==='dates'){
@@ -4551,12 +4686,12 @@ function go(pg){
     if(!hasPermission('settings')){alert('Access denied');return;}
   }
   // Route to page
-  var fns={dashboard:pgDash,customers:pgCusts,cust_new:pgCustF,invoices:pgInvoices,invoice_new:pgQF,receipts:pgRcpts,receipt_new:pgRF,production:pgProd,prod_new:pgNewProd,prod_all:pgAllJobs,prod_log:pgProdLog,dates:pgDates,payroll:pgPay,workers:pgWorkers,performance:pgPerformance,r_outstanding:pgDaysOutstanding,r_sales:pgSalesByCust,r_transactions:pgCustTrans,r_sales_report:pgSalesReport,settings:pgSettings};
+  var fns={dashboard:pgDash,customers:pgCusts,cust_new:pgCustF,invoices:pgInvoices,invoice_new:pgQF,receipts:pgRcpts,receipt_new:pgRF,production:pgProd,prod_new:pgNewProd,prod_all:pgAllJobs,prod_log:pgProdLog,dates:pgDates,payroll:pgPay,workers:pgWorkers,performance:pgPerformance,accounting:pgAccounting,r_outstanding:pgDaysOutstanding,r_sales:pgSalesByCust,r_transactions:pgCustTrans,r_sales_report:pgSalesReport,settings:pgSettings};
   if(fns[pg])fns[pg]();
     // Update active tab
   document.querySelectorAll('.ti').forEach(function(e){
     e.classList.remove('on','text-primary','dark:text-primary-400','border-primary');
-    var match=e.dataset.pg===pg||((pg==='r_sales_report'||pg==='r_sales'||pg==='r_transactions')&&e.dataset.pg==='r_outstanding');
+    var match=e.dataset.pg===pg||(e.dataset.pg==='accounting'&&(pg==='r_sales_report'||pg==='r_sales'||pg==='r_transactions'||pg==='r_outstanding'||pg==='invoice_new'||pg==='invoices'||pg==='receipt_new'||pg==='receipts'));
     if(match){
       e.classList.add('on','text-primary','dark:text-primary-400','border-primary');
     }
@@ -4566,7 +4701,7 @@ function go(pg){
     e.classList.remove('on');
     // Convert page name back to sidebar item match
     var label=e.textContent.trim();
-    var pgMap={dashboard:'Dashboard',customers:'Customer List',cust_new:'Add Customer',invoices:'All Invoices',invoice_new:'Process Invoice',receipts:'All Receipts',receipt_new:'New Receipt',production:'Active Jobs',prod_new:'New Job',prod_all:'All Jobs',prod_log:'Completed Jobs',dates:'Dates Log',payroll:'Weekly Payslips',workers:'Workers',performance:'Performance',r_outstanding:'Days Outstanding',r_sales:'Sales by Customer',r_transactions:'Customer Transactions',r_sales_report:'Sales Report',settings:'General Settings'};
+    var pgMap={dashboard:'Dashboard',customers:'Customer List',cust_new:'Add Customer',invoices:'All Invoices',invoice_new:'Process Invoice',receipts:'All Receipts',receipt_new:'New Receipt',production:'Active Jobs',prod_new:'New Job',prod_all:'All Jobs',prod_log:'Completed Jobs',dates:'Dates Log',payroll:'Weekly Payslips',workers:'Workers',performance:'Performance',accounting:'Overview',r_sales_report:'Sales Report',r_outstanding:'AR Aging',r_sales:'Sales by Customer',r_transactions:'Customer Ledger',settings:'General Settings'};
     if(pgMap[pg]&&e.textContent.trim()===pgMap[pg]){
       e.classList.add('on');
     }
@@ -4578,8 +4713,8 @@ function toggleDark(){
   html.classList.toggle('dark');
   localStorage.setItem('dc_dark',html.classList.contains('dark'));
 }
-// Init dark mode from localStorage
-if(localStorage.getItem('dc_dark')==='true'){document.documentElement.classList.add('dark');}
+// Init dark mode: localStorage > system preference > light
+if(localStorage.getItem('dc_dark')==='true'){document.documentElement.classList.add('dark');}else if(localStorage.getItem('dc_dark')===null&&window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.classList.add('dark');}
 
 // Initialize: check session first, then load data
 (async function(){
